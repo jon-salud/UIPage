@@ -7,9 +7,8 @@
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
-<body>
-    <!-- Include header -->
-    <div id="header-placeholder"></div>
+<body class="full-height">
+    <div id="header"></div>
     <div class="content">
         <div class="row">
             <div class="demo">
@@ -18,9 +17,9 @@
                 </div>
             </div>
             <div class="code">
-                <button type="button" class="toggle-button">Show snippet</button>
-                <button type="button" class="copy-button">Copy</button>
-                <pre class="code-snippet"><code class="language-css">
+                <button type="button" class="toggle-button" onclick="toggleCodeSnippet('snippet1')">Show snippet</button>
+                <button type="button" class="copy-button" onclick="copyCodeSnippet('snippet1')">Copy</button>
+                <pre id="snippet1" class="code-snippet"><code class="language-css">
 .animated-box {
     width: 100px;
     height: 100px;
@@ -44,9 +43,9 @@
                 <div class="hover-box-2">Hover me too!</div>
             </div>
             <div class="code">
-                <button type="button" class="toggle-button">Show snippet</button>
-                <button type="button" class="copy-button">Copy</button>
-                <pre class="code-snippet"><code class="language-css">
+                <button type="button" class="toggle-button" onclick="toggleCodeSnippet('snippet2')">Show snippet</button>
+                <button type="button" class="copy-button" onclick="copyCodeSnippet('snippet2')">Copy</button>
+                <pre id="snippet2" class="code-snippet"><code class="language-css">
 .hover-box-2 {
     width: 100px;
     height: 100px;
@@ -72,9 +71,9 @@
                 <div class="hover-box-3">Hover me as well!</div>
             </div>
             <div class="code">
-                <button type="button" class="toggle-button">Show snippet</button>
-                <button type="button" class="copy-button">Copy</button>
-                <pre class="code-snippet"><code class="language-css">
+                <button type="button" class="toggle-button" onclick="toggleCodeSnippet('snippet3')">Show snippet</button>
+                <button type="button" class="copy-button" onclick="copyCodeSnippet('snippet3')">Copy</button>
+                <pre id="snippet3" class="code-snippet"><code class="language-css">
 .hover-box-3 {
     width: 100px;
     height: 100px;
@@ -95,7 +94,7 @@
             </div>
         </div>
     </div>
-    <!-- Include footer -->
-    <div id="footer-placeholder"></div>
+    <div id="footer"></div>
+    <div id="overlay" class="overlay"></div>
 </body>
 </html>

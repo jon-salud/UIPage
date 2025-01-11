@@ -7,9 +7,8 @@
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
-<body>
-    <!-- Include header -->
-    <div id="header-placeholder"></div>
+<body class="full-height">
+    <div id="header"></div>
     <div class="content">
         <div class="row">
             <div class="demo">
@@ -29,9 +28,9 @@
                 </div>
             </div>
             <div class="code">
-                <button type="button" class="toggle-button">Show snippet</button>
-                <button type="button" class="copy-button">Copy</button>
-                <pre class="code-snippet"><code class="language-css">
+                <button type="button" class="toggle-button" onclick="toggleCodeSnippet('snippet1')">Show snippet</button>
+                <button type="button" class="copy-button" onclick="copyCodeSnippet('snippet1')">Copy</button>
+                <pre id="snippet1" class="code-snippet"><code class="language-css">
 .cards-demo {
     display: flex;
     justify-content: space-around;
@@ -50,11 +49,11 @@
 .card:hover {
     transform: translateY(-10px);
 }
-            </code></pre>
+                </code></pre>
             </div>
         </div>
     </div>
-    <!-- Include footer -->
-    <div id="footer-placeholder"></div>
+    <div id="footer"></div>
+    <div id="overlay" class="overlay"></div>
 </body>
 </html>

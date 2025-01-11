@@ -7,22 +7,21 @@
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
-<body>
-    <!-- Include header -->
-    <div id="header-placeholder"></div>
+<body class="full-height">
+    <div id="header"></div>
     <div class="content">
         <div class="row">
             <div class="demo">
-                <div class="click-demo">
+                <div class="container">
                     <button type="button" class="click-button">Click me!</button>
-                    <button type="button" class="click-button-2">Click me too!</button>
-                    <button type="button" class="click-button-3">Click me as well!</button>
                 </div>
             </div>
             <div class="code">
-                <button type="button" class="toggle-button" onclick="toggleCode(this)">Show snippet</button>
-                <button type="button" class="copy-button" onclick="copyCode(this)">Copy</button>
-                <pre class="code-snippet"><code class="language-css">
+                <div class="button-container">
+                    <button type="button" class="toggle-button" onclick="toggleCodeSnippet('snippet1')">Show snippet</button>
+                    <button type="button" class="copy-button" onclick="copyCodeSnippet('snippet1')">Copy</button>
+                </div>
+                <pre id="snippet1" class="code-snippet"><code class="language-css">
 .click-button {
     padding: 10px 20px;
     font-size: 1em;
@@ -36,7 +35,19 @@
 .click-button:active {
     background-color: #c0392b;
 }
-
+                </code></pre>
+            </div>
+        </div>
+        <div class="row">
+            <div class="demo">
+                <button type="button" class="click-button-2">Click me too!</button>
+            </div>
+            <div class="code">
+                <div class="button-container">
+                    <button type="button" class="toggle-button" onclick="toggleCodeSnippet('snippet2')">Show snippet</button>
+                    <button type="button" class="copy-button" onclick="copyCodeSnippet('snippet2')">Copy</button>
+                </div>
+                <pre id="snippet2" class="code-snippet"><code class="language-css">
 .click-button-2 {
     padding: 10px 20px;
     font-size: 1em;
@@ -52,7 +63,19 @@
     background-color: #732d91;
     transform: scale(1.1);
 }
-
+                </code></pre>
+            </div>
+        </div>
+        <div class="row">
+            <div class="demo">
+                <button type="button" class="click-button-3">Click me as well!</button>
+            </div>
+            <div class="code">
+                <div class="button-container">
+                    <button type="button" class="toggle-button" onclick="toggleCodeSnippet('snippet3')">Show snippet</button>
+                    <button type="button" class="copy-button" onclick="copyCodeSnippet('snippet3')">Copy</button>
+                </div>
+                <pre id="snippet3" class="code-snippet"><code class="language-css">
 .click-button-3 {
     padding: 10px 20px;
     font-size: 1em;
@@ -72,7 +95,7 @@
             </div>
         </div>
     </div>
-    <!-- Include footer -->
-    <div id="footer-placeholder"></div>
+    <div id="footer"></div>
+    <div id="overlay" class="overlay"></div>
 </body>
 </html>

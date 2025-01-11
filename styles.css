@@ -2,17 +2,17 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f0f0f0;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background-color: #f0f0f0;
+    min-height: 100vh; /* Ensure the body has a minimum height */
 }
 
 header {
-    margin-bottom: 20px;
-    text-align: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: left; /* Align title to the left */
 }
 
 h1 {
@@ -118,8 +118,7 @@ h1 {
     margin-left: 20px;
     transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);}
 
 .click-button-2:active {
     background-color: #732d91;
@@ -150,30 +149,38 @@ h1 {
     justify-content: center;
     gap: 20px;
     height: auto;
+    flex-grow: 1; /* Ensure category-links take up available space */
+    min-height: calc(100vh - 100px); /* Minimum height for desktop view */
 }
 
 .category-links a {
     margin: 10px;
     padding: 15px 25px;
     font-size: 1.2em;
-    background-color: #2ecc71;
-    color: white;
+    background-color: #a3d5d3; /* Calming teal color */
+    color: #333; /* Darker text color for contrast */
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
     flex: 1 1 calc(25% - 20px); /* 4 columns for desktop view */
     box-sizing: border-box;
     text-align: center;
+    max-width: 200px; /* Maximum width */
+    max-height: 100px; /* Maximum height */
 }
 
 .category-links a:hover {
-    background-color: #27ae60;
+    background-color: #8bbcb8; /* Slightly darker teal on hover */
     transform: translateY(-5px);
 }
 
 footer {
-    margin-top: 20px;
+    margin-top: auto;
     text-align: center;
+    width: 100%;
+    background-color: #87CEEB; /* Calming sky blue color */
+    color: white;
+    padding: 10px 0;
 }
 
 p {
@@ -358,6 +365,10 @@ button:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.full-height {
+    min-height: 100vh; /* Ensure the element has a minimum height of 100vh */
+}
+
 @media (max-width: 1024px) {
     .category-links a {
         flex: 1 1 calc(33.333% - 20px); /* 3 columns for tablet view */
@@ -455,18 +466,22 @@ button:hover {
     position: fixed;
     z-index: 1;
     top: 0;
-    right: 0;
+    right: 0; /* Ensure sidebar appears on the right side */
     background-color: #111;
     overflow-x: hidden;
-    transition: 0.5s;
+    transition: width 0.5s; /* Ensure transition is applied to width */
     padding-top: 60px;
 }
 
+.sidebar.open {
+    width: 250px; /* Set the width when the sidebar is open */
+}
+
 .sidebar a {
-    padding: 10px 15px;
+    padding: 8px 8px 8px 32px;
     text-decoration: none;
-    font-size: 1.2em;
-    color: #818181;
+    font-size: 25px;
+    color: white;
     display: block;
     transition: 0.3s;
 }
@@ -479,7 +494,7 @@ button:hover {
     position: absolute;
     top: 0;
     right: 25px;
-    font-size: 2em;
+    font-size: 36px;
     margin-left: 50px;
 }
 
@@ -495,4 +510,85 @@ button:hover {
 
 .openbtn:hover {
     background-color: #444;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #87CEEB; /* Calming sky blue color */
+    color: white;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Align title and subtitle to the left */
+}
+
+.title-container h1, .title-container h2 {
+    margin: 0;
+    text-align: center;
+}
+
+.hamburger {
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+    display: none;
+}
+
+.overlay.show {
+    display: block;
+}
+
+@media screen and (max-width: 600px) {
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hamburger {
+        align-self: flex-end;
+    }
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+}
+
+.code-snippet {
+    display: none; /* Ensure code snippets are initially hidden */
+}
+
+.logo {
+    font-family: 'Wingdings', sans-serif; /* Use Wingdings font for the logo */
+    font-size: 4.5em;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.logo:hover {
+    color: #2980b9;
+    transform: translateY(-5px);
 }

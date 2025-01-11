@@ -1,15 +1,28 @@
 // Function to fetch and include header and footer
 function includeHeaderFooter() {
-    fetch('/header.html')
-        .then(response => response.text())
+    fetch('header.html')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.text();
+        })
         .then(data => {
             setInnerHTML('header', data);
-        });
-    fetch('/footer.html')
-        .then(response => response.text())
+        })
+        .catch(error => console.error('Error fetching header:', error));
+
+    fetch('footer.html')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.text();
+        })
         .then(data => {
             setInnerHTML('footer', data);
-        });
+        })
+        .catch(error => console.error('Error fetching footer:', error));
 }
 
 // Function to set the page title
@@ -23,7 +36,12 @@ function setPageTitle(title) {
 
 // Function to toggle code snippet visibility
 function toggleCodeSnippet(snippetId) {
-    toggleElement(snippetId);
+    const snippet = document.getElementById(snippetId);
+    if (snippet.style.display === 'none' || snippet.style.display === '') {
+        snippet.style.display = 'block';
+    } else {
+        snippet.style.display = 'none';
+    }
 }
 
 // Function to copy code snippet to clipboard
@@ -43,7 +61,18 @@ function openSidebar() {
 
 // Function to close sidebar navigation
 function closeSidebar() {
-    hideElement('sidebar');
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+    sidebar.classList.remove("open");
+    overlay.classList.remove("show");
+}
+
+// Function to toggle the sidebar
+function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+    sidebar.classList.toggle("open"); // Toggle the 'open' class
+    overlay.classList.toggle("show"); // Toggle the 'show' class
 }
 
 // Function to show an element
@@ -79,6 +108,9 @@ function setInnerHTML(elementId, html) {
     const element = document.getElementById(elementId);
     if (element) {
         element.innerHTML = html;
+        console.log(`Set innerHTML for ${elementId}`);
+    } else {
+        console.error(`Element with ID ${elementId} not found`);
     }
 }
 
@@ -87,5 +119,17 @@ function addEventListener(elementId, event, handler) {
     const element = document.getElementById(elementId);
     if (element) {
         element.addEventListener(event, handler);
+        console.log(`Added event listener for ${event} on ${elementId}`);
+    } else {
+        console.error(`Element with ID ${elementId} not found`);
     }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM fully loaded and parsed');
+    includeHeaderFooter();
+
+    // Add event listener to close sidebar when clicking outside of it
+    const overlay = document.getElementById("overlay");
+    overlay.addEventListener("click", closeSidebar);
+});
