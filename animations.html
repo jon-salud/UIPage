@@ -11,44 +11,93 @@
     <!-- Include header -->
     <div id="header"></div>
     <div class="content">
-        <div class="demo">
-            <div class="animations-demo">
-                <div class="animated-element">Animate me!</div>
+        <div class="row">
+            <div class="demo">
+                <div class="animated-bounce">Bounce me</div>
+            </div>
+            <div class="code">
+                <button type="button" class="toggle-button" onclick="toggleCodeSnippet('snippet1')">Show snippet</button>
+                <button type="button" class="copy-button" onclick="copyCodeSnippet('snippet1')">Copy</button>
+                <pre id="snippet1" class="code-snippet"><code class="language-css">
+    .animated-bounce {
+        padding: 20px;
+        background-color: #3498db;
+        color: white;
+        font-weight: bold;
+        animation: bounce 2s infinite;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0);
+        }
+        40% {
+            transform: translateY(-30px);
+        }
+        60% {
+            transform: translateY(-15px);
+        }
+    }
+                </code></pre>
             </div>
         </div>
-        <div class="code">
-            <button type="button" class="toggle-button" onclick="toggleCodeSnippet('snippet1')">Show snippet</button>
-            <button type="button" class="copy-button" onclick="copyCodeSnippet('snippet1')">Copy</button>
-            <pre id="snippet1" class="code-snippet"><code class="language-css">
-.animations-demo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 60vh;
-}
 
-.animated-element {
+        <div class="row">
+            <div class="demo">
+                <div class="animated-fade">Fade in me</div>
+            </div>
+            <div class="code">
+                <button type="button" class="toggle-button" onclick="toggleCodeSnippet('snippetFade')">Show snippet</button>
+                <button type="button" class="copy-button" onclick="copyCodeSnippet('snippetFade')">Copy</button>
+                <pre id="snippetFade" class="code-snippet"><code class="language-css">
+.animated-fade {
     padding: 20px;
-    background-color: #3498db;
-    color: white;
+    background-color: #e74c3c;
+    color: #fff;
     font-weight: bold;
-    animation: bounce 2s infinite;
     border-radius: 10px;
+    animation: fadeIn 2s forwards;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
+.animated-fade {
+    background-color: #e74c3c;
+    animation: 3s fadeOut infinite running ;
+}
+                </code></pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="demo">
+                <div class="animated-spin">Spin me</div>
+            </div>
+            <div class="code">
+                <button type="button" class="toggle-button" onclick="toggleCodeSnippet('snippetSpin')">Show snippet</button>
+                <button type="button" class="copy-button" onclick="copyCodeSnippet('snippetSpin')">Copy</button>
+                <pre id="snippetSpin" class="code-snippet"><code class="language-css">
+.animated-spin {
+    padding: 20px;
+    background-color: #9b59b6;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 10px;
+    animation: spin 2s linear infinite;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
     }
-    40% {
-        transform: translateY(-30px);
-    }
-    60% {
-        transform: translateY(-15px);
+    100% {
+        transform: rotate(360deg);
     }
 }
-            </code></pre>
+                </code></pre>
+            </div>
         </div>
     </div>
     <!-- Include footer -->
