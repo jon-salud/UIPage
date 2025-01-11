@@ -480,14 +480,17 @@ button:hover {
     height: 60vh;
 }
 
-.animated-element {
+.animated-bounce, .animated-fade, .animated-spin {
     padding: 20px;
-    background-color: #3498db;
     color: white;
     font-weight: bold;
-    animation: bounce 2s infinite;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.animated-bounce {
+    background-color: #3498db;
+    animation: bounce 2s infinite;
 }
 
 @keyframes bounce {
@@ -499,6 +502,43 @@ button:hover {
     }
     60% {
         transform: translateY(-15px);
+    }
+}
+
+.animated-fade {
+    background-color: #e74c3c;
+    animation: 3s fadeOut infinite running ;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.animated-spin {
+    background-color: #9b59b6;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
     }
 }
 
