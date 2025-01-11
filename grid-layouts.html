@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
-<body class="full-height">
+<body class="full-height" onload="includeHeaderFooter()">
     <!-- Include header -->
     <div id="header"></div>
 
@@ -36,6 +36,74 @@
 
 .grid-item {
     background-color: #3498db;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5em;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+                </code></pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="demo">
+                <div class="masonry-grid">
+                    <div class="masonry-item">1</div>
+                    <div class="masonry-item">2</div>
+                    <div class="masonry-item">3</div>
+                    <div class="masonry-item">4</div>
+                    <div class="masonry-item">5</div>
+                    <div class="masonry-item">6</div>
+                </div>
+            </div>
+            <div class="code">
+                <button type="button" class="toggle-button" onclick="toggleCodeSnippet('snippetMasonry')">Show snippet</button>
+                <button type="button" class="copy-button" onclick="copyCodeSnippet('snippetMasonry')">Copy</button>
+                <pre id="snippetMasonry" class="code-snippet"><code class="language-css">
+.masonry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+}
+
+.masonry-item {
+    background-color: #e74c3c;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5em;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+                </code></pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="demo">
+                <div class="responsive-grid">
+                    <div class="responsive-item">1</div>
+                    <div class="responsive-item">2</div>
+                    <div class="responsive-item">3</div>
+                    <div class="responsive-item">4</div>
+                    <div class="responsive-item">5</div>
+                    <div class="responsive-item">6</div>
+                </div>
+            </div>
+            <div class="code">
+                <button type="button" class="toggle-button" onclick="toggleCodeSnippet('snippetResponsive')">Show snippet</button>
+                <button type="button" class="copy-button" onclick="copyCodeSnippet('snippetResponsive')">Copy</button>
+                <pre id="snippetResponsive" class="code-snippet"><code class="language-css">
+.responsive-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.responsive-item {
+    background-color: #2ecc71;
     color: white;
     padding: 20px;
     text-align: center;

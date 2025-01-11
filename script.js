@@ -199,4 +199,23 @@ document.addEventListener('DOMContentLoaded', () => {
             closeSidebar();
         }
     });
+
+    // Breadcrumb generation
+    const breadcrumbs = document.getElementById('breadcrumbs');
+    if (breadcrumbs) {
+        const path = window.location.pathname.split('/').filter(Boolean);
+        let breadcrumbHTML = '<a href="index.html">Home</a>';
+        let currentPath = '';
+
+        path.forEach((segment, index) => {
+            currentPath += `/${segment}`;
+            if (index < path.length - 1) {
+                breadcrumbHTML += ` / <a href="${currentPath}">${segment.replace('.html', '').replace(/-/g, ' ')}</a>`;
+            } else {
+                breadcrumbHTML += ` / ${segment.replace('.html', '').replace(/-/g, ' ')}`;
+            }
+        });
+
+        breadcrumbs.innerHTML = breadcrumbHTML;
+    }
 });
