@@ -125,11 +125,37 @@ function addEventListener(elementId, event, handler) {
     }
 }
 
+// Function to open sidebar navigation
+function openNav() {
+    document.getElementById("mySidebar").classList.add("open");
+}
+
+// Function to close sidebar navigation
+function closeNav() {
+    document.getElementById("mySidebar").classList.remove("open");
+}
+
+function openOverlayNav() {
+    document.getElementById("myOverlayNav").classList.add("open");
+}
+
+function closeOverlayNav() {
+    document.getElementById("myOverlayNav").classList.remove("open");
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM fully loaded and parsed');
     includeHeaderFooter();
 
     // Add event listener to close sidebar when clicking outside of it
     const overlay = document.getElementById("overlay");
-    overlay.addEventListener("click", closeSidebar);
+    overlay.addEventListener("click", closeNav);
+
+    // Add event listener to close overlay navigation when clicking outside of it
+    const overlayNav = document.getElementById("myOverlayNav");
+    overlayNav.addEventListener("click", (event) => {
+        if (event.target === overlayNav) {
+            closeOverlayNav();
+        }
+    });
 });

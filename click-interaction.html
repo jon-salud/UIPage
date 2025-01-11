@@ -12,9 +12,7 @@
     <div class="content">
         <div class="row">
             <div class="demo">
-                <div class="container">
-                    <button type="button" class="click-button">Click me!</button>
-                </div>
+                <button type="button" class="click-button">Click me!</button>
             </div>
             <div class="code">
                 <div class="button-container">
@@ -29,11 +27,18 @@
     color: white;
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .click-button:active {
     background-color: #c0392b;
+}
+
+.click-button:hover {
+    background-color: #c0392b;
+    transform: translateY(-5px); /* Move up slightly on hover */
 }
                 </code></pre>
             </div>
@@ -57,11 +62,18 @@
     cursor: pointer;
     margin-left: 20px;
     transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .click-button-2:active {
     background-color: #732d91;
     transform: scale(1.1);
+}
+
+.click-button-2:hover {
+    background-color: #732d91;
+    transform: scale(1.1) rotate(-5deg); /* Rotate slightly on hover */
 }
                 </code></pre>
             </div>
@@ -85,11 +97,19 @@
     cursor: pointer;
     margin-left: 20px;
     transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .click-button-3:active {
     background-color: #e67e22;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.click-button-3:hover {
+    background-color: #e67e22;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transform: translateY(-5px); /* Move up slightly on hover */
 }
                 </code></pre>
             </div>
