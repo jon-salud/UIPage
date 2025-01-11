@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Interaction Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Include header -->
+    <div id="header-placeholder"></div>
+    <div class="content">
+        <div class="row">
+            <div class="demo">
+                <div class="click-demo">
+                    <button type="button" class="click-button">Click me!</button>
+                    <button type="button" class="click-button-2">Click me too!</button>
+                    <button type="button" class="click-button-3">Click me as well!</button>
+                </div>
+            </div>
+            <div class="code">
+                <button type="button" class="toggle-button" onclick="toggleCode(this)">Show snippet</button>
+                <button type="button" class="copy-button" onclick="copyCode(this)">Copy</button>
+                <pre class="code-snippet"><code class="language-css">
+.click-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.click-button:active {
+    background-color: #c0392b;
+}
+
+.click-button-2 {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #8e44ad;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-left: 20px;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.click-button-2:active {
+    background-color: #732d91;
+    transform: scale(1.1);
+}
+
+.click-button-3 {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-left: 20px;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.click-button-3:active {
+    background-color: #e67e22;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+                </code></pre>
+            </div>
+        </div>
+    </div>
+    <!-- Include footer -->
+    <div id="footer-placeholder"></div>
+</body>
+</html>

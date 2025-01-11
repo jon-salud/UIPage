@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Layouts Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Include header -->
+    <div id="header-placeholder"></div>
+
+    <div class="content">
+        <div class="row">
+            <div class="demo">
+                <div class="grid-demo">
+                    <div class="grid-item">1</div>
+                    <div class="grid-item">2</div>
+                    <div class="grid-item">3</div>
+                    <div class="grid-item">4</div>
+                    <div class="grid-item">5</div>
+                    <div class="grid-item">6</div>
+                </div>
+            </div>
+            <div class="code">
+                <button type="button" class="toggle-button">Show snippet</button>
+                <button type="button" class="copy-button">Copy</button>
+                <pre class="code-snippet"><code class="language-css">
+.grid-demo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 100%;
+}
+
+.grid-item {
+    background-color: #3498db;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5em;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+                </code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include footer -->
+    <div id="footer-placeholder"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                    document.querySelector('header h1').textContent = 'Grid Layouts Page';
+                });
+
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                });
+
+            function toggleCode(button) {
+                const pre = button.nextElementSibling.nextElementSibling;
+                if (pre.style.display === 'none') {
+                    pre.style.display = 'block';
+                    button.textContent = 'Close';
+                } else {
+                    pre.style.display = 'none';
+                    button.textContent = 'Show snippet';
+                }
+            }
+
+            function copyCode(button) {
+                const code = button.nextElementSibling.textContent;
+                navigator.clipboard.writeText(code).then(() => {
+                    alert('Code copied to clipboard');
+                });
+            }
+
+            document.querySelectorAll('.code-snippet').forEach(pre => {
+                pre.style.display = 'none';
+            });
+        });
+
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modals Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Include header -->
+    <div id="header-placeholder"></div>
+    <div class="content">
+        <div class="row">
+            <div class="demo">
+                <div class="modals-demo">
+                    <button type="button" class="open-modal">Open Modal</button>
+                    <div class="modal">
+                        <div class="modal-content">
+                            <span class="close-modal">&times;</span>
+                            <p>Modal content goes here.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="code">
+                <button type="button" class="toggle-button">Show snippet</button>
+                <button type="button" class="copy-button">Copy</button>
+                <pre class="code-snippet"><code class="language-css">
+.modals-demo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+}
+
+.open-modal {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.open-modal:hover {
+    background-color: #2980b9;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+                </code></pre>
+            </div>
+        </div>
+    </div>
+    <!-- Include footer -->
+    <div id="footer-placeholder"></div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Include header -->
+    <div id="header-placeholder"></div>
+    <div class="content">
+        <div class="row">
+            <div class="demo">
+                <nav class="nav-demo">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="code">
+                <button type="button" class="toggle-button">Show snippet</button>
+                <button type="button" class="copy-button">Copy</button>
+                <pre class="code-snippet"><code class="language-css">
+.nav-demo ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-demo li {
+    display: inline;
+}
+
+.nav-demo a {
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.nav-demo a:hover {
+    color: #2980b9;
+    transform: translateY(-5px);
+}
+                </code></pre>
+            </div>
+        </div>
+    </div>
+    <!-- Include footer -->
+    <div id="footer-placeholder"></div>
+</body>
+</html>
