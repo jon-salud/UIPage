@@ -13,8 +13,7 @@ header {
     width: 100%;
     margin: 0;
     padding: 0;
-    text-align: left; /* Align title to the left */
-    position: sticky;
+    text-align: center; 
     top: 0;
     z-index: 1000;
     background-color: #87CEEB; /* Ensure the header has a background color */
@@ -456,6 +455,23 @@ button:hover {
     cursor: pointer;
 }
 
+.modal.slide-in {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: right 0.3s ease-in-out;
+}
+
+.modal.slide-in.show {
+    right: 0;
+}
+
 /* Animations Demo */
 .animations-demo {
     display: flex;
@@ -696,7 +712,7 @@ button:hover {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 0;
+    z-index: 1000; /* Ensure the overlay is below the modal */
     display: none;
 }
 

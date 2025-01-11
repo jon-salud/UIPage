@@ -62,17 +62,13 @@ function openSidebar() {
 // Function to close sidebar navigation
 function closeSidebar() {
     const sidebar = document.getElementById("sidebar");
-    const overlay = document.getElementById("overlay");
     sidebar.classList.remove("open");
-    overlay.classList.remove("show");
 }
 
 // Function to toggle the sidebar
 function toggleSidebar() {
     const sidebar = document.getElementById("sidebar");
-    const overlay = document.getElementById("overlay");
     sidebar.classList.toggle("open"); // Toggle the 'open' class
-    overlay.classList.toggle("show"); // Toggle the 'show' class
 }
 
 // Function to show an element
@@ -114,17 +110,6 @@ function setInnerHTML(elementId, html) {
     }
 }
 
-// Function to add an event listener to an element
-function addEventListener(elementId, event, handler) {
-    const element = document.getElementById(elementId);
-    if (element) {
-        element.addEventListener(event, handler);
-        console.log(`Added event listener for ${event} on ${elementId}`);
-    } else {
-        console.error(`Element with ID ${elementId} not found`);
-    }
-}
-
 // Function to open sidebar navigation
 function openNav() {
     document.getElementById("mySidebar").classList.add("open");
@@ -143,19 +128,59 @@ function closeOverlayNav() {
     document.getElementById("myOverlayNav").classList.remove("open");
 }
 
+function openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal.classList.contains('slide-in')) {
+        modal.classList.add('show');
+    } else {
+        modal.style.display = "flex";
+    }
+}
+
+function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal.classList.contains('slide-in')) {
+        modal.classList.remove('show');
+    } else {
+        modal.style.display = "none";
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM fully loaded and parsed');
     includeHeaderFooter();
 
     // Add event listener to close sidebar when clicking outside of it
     const overlay = document.getElementById("overlay");
-    overlay.addEventListener("click", closeNav);
+    if (overlay) {
+        overlay.addEventListener("click", closeNav);
+    }
 
     // Add event listener to close overlay navigation when clicking outside of it
     const overlayNav = document.getElementById("myOverlayNav");
-    overlayNav.addEventListener("click", (event) => {
-        if (event.target === overlayNav) {
-            closeOverlayNav();
-        }
+    if (overlayNav) {
+        overlayNav.addEventListener("click", (event) => {
+            if (event.target === overlayNav) {
+                closeOverlayNav();
+            }
+        });
+    }
+
+    // Add event listener to close modal when clicking outside of it
+    const modals = document.querySelectorAll('.modal');
+    modals.forEach(modal => {
+        window.addEventListener("click", (event) => {
+            if (event.target === modal) {
+                closeModal(modal.id);
+            }
+        });
     });
+
+    // Ensure the element with ID 'click' exists before adding the event listener
+    const clickElement = document.getElementById("click");
+    if (clickElement) {
+        clickElement.addEventListener("click", () => {
+            console.log("Element with ID 'click' was clicked.");
+        });
+    }
 });
