@@ -68,7 +68,7 @@ function closeSidebar() {
 // Function to toggle the sidebar
 function toggleSidebar() {
     const sidebar = document.getElementById("sidebar");
-    sidebar.classList.toggle("open"); // Toggle the 'open' class
+    sidebar.classList.toggle("open");
 }
 
 // Function to show an element
@@ -183,4 +183,20 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log("Element with ID 'click' was clicked.");
         });
     }
+
+    document.addEventListener('click', (event) => {
+        const sidebar = document.getElementById("sidebar");
+        if (sidebar.classList.contains("open") &&
+            !sidebar.contains(event.target) &&
+            !event.target.closest(".hamburger")) {
+            closeSidebar();
+        }
+    });
+
+    document.addEventListener('keydown', (event) => {
+        const sidebar = document.getElementById("sidebar");
+        if (event.key === "Escape" && sidebar.classList.contains("open")) {
+            closeSidebar();
+        }
+    });
 });
