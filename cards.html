@@ -52,6 +52,97 @@
                 </code></pre>
             </div>
         </div>
+        <div class="row">
+            <div class="demo">
+                <div class="cards-demo-2">
+                    <div class="card-2">
+                        <h2>Card Title 4</h2>
+                        <p>Card content goes here.</p>
+                    </div>
+                    <div class="card-2">
+                        <h2>Card Title 5</h2>
+                        <p>Card content goes here.</p>
+                    </div>
+                    <div class="card-2">
+                        <h2>Card Title 6</h2>
+                        <p>Card content goes here.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="code">
+                <button type="button" class="toggle-button" onclick="toggleCodeSnippet('snippet2')">Show snippet</button>
+                <button type="button" class="copy-button" onclick="copyCodeSnippet('snippet2')">Copy</button>
+                <pre id="snippet2" class="code-snippet"><code class="language-css">
+.cards-demo-2 {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.card-2 {
+    width: 200px;
+    padding: 20px;
+    background-color: #f39c12;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    -webkit-text-fill-color: #f8fffe;
+}
+
+.card-2:hover {
+    transform:matrix(1.1,0,0,1.1,0,0);
+    background-color: #e67e22;
+}
+                </code></pre>
+            </div>
+        </div>
+        <div class="row">
+            <div class="demo">
+                <div class="cards-demo-3">
+                    <div class="card-3">
+                        <h2>Card Title 7</h2>
+                        <p>Card content goes here.</p>
+                    </div>
+                    <div class="card-3">
+                        <h2>Card Title 8</h2>
+                        <p>Card content goes here.</p>
+                    </div>
+                    <div class="card-3">
+                        <h2>Card Title 9</h2>
+                        <p>Card content goes here.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="code">
+                <button type="button" class="toggle-button" onclick="toggleCodeSnippet('snippet3')">Show snippet</button>
+                <button type="button" class="copy-button" onclick="copyCodeSnippet('snippet3')">Copy</button>
+                <pre id="snippet3" class="code-snippet"><code class="language-css">
+.cards-demo-3 {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.card-3 {
+    width: 200px;
+    padding: 20px;
+    background-color: #8e44ad;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    -webkit-text-fill-color: #00ffd9;
+}
+
+.card-3:hover {
+    transform: scale(1.2) translateX(20px);
+    border-radius: 35px;
+    border-color: #000000;
+    border-style: solid;
+    opacity: 0.9;
+}
+                </code></pre>
+            </div>
+        </div>
     </div>
     <div id="footer"></div>
     <div id="overlay" class="overlay"></div>
