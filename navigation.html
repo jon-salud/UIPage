@@ -7,9 +7,8 @@
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
-<body>
-    <!-- Include header -->
-    <div id="header-placeholder"></div>
+<body class="full-height" onclick="closeNav(); closeOverlayNav();">
+    <div id="header"></div>
     <div class="content">
         <div class="row">
             <div class="demo">
@@ -23,9 +22,9 @@
                 </nav>
             </div>
             <div class="code">
-                <button type="button" class="toggle-button">Show snippet</button>
-                <button type="button" class="copy-button">Copy</button>
-                <pre class="code-snippet"><code class="language-css">
+                <button type="button" class="toggle-button" onclick="toggleCodeSnippet('snippet1')">Show snippet</button>
+                <button type="button" class="copy-button" onclick="copyCodeSnippet('snippet1')">Copy</button>
+                <pre id="snippet1" class="code-snippet"><code class="language-css">
 .nav-demo ul {
     list-style-type: none;
     padding: 0;
@@ -51,8 +50,256 @@
                 </code></pre>
             </div>
         </div>
+        <div class="row">
+            <div class="demo">
+                <nav class="nav-demo-2">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="code">
+                <button type="button" class="toggle-button" onclick="toggleCodeSnippet('snippet2')">Show snippet</button>
+                <button type="button" class="copy-button" onclick="copyCodeSnippet('snippet2')">Copy</button>
+                <pre id="snippet2" class="code-snippet"><code class="language-css">
+.nav-demo-2 ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nav-demo-2 li {
+    display: block;
+}
+
+.nav-demo-2 a {
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    padding: 10px;
+    background-color: #ecf0f1;
+    border-radius: 5px;
+}
+
+.nav-demo-2 a:hover {
+    color: #2980b9;
+    transform: translateX(10px);
+}
+                </code></pre>
+            </div>
+        </div>
+        <div class="row">
+            <div class="demo">
+                <nav class="nav-demo-3">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="code">
+                <button type="button" class="toggle-button" onclick="toggleCodeSnippet('snippet3')">Show snippet</button>
+                <button type="button" class="copy-button" onclick="copyCodeSnippet('snippet3')">Copy</button>
+                <pre id="snippet3" class="code-snippet"><code class="language-css">
+.nav-demo-3 ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #2c3e50;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.nav-demo-3 li {
+    display: block;
+}
+
+.nav-demo-3 a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    padding: 10px;
+    background-color: #34495e;
+    border-radius: 5px;
+}
+
+.nav-demo-3 a:hover {
+    color: #ecf0f1;
+    transform: translateX(10px);
+}
+                </code></pre>
+            </div>
+        </div>
+        <div class="row">
+            <div class="demo">
+                <button class="openbtn" onclick="event.stopPropagation(); openNav()">☰ Open Sidebar</button>
+                <div id="mySidebar" class="sidebar" onclick="event.stopPropagation()">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                    <a href="#">Home</a>
+                    <a href="#">About</a>
+                    <a href="#">Services</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+            <div class="code">
+                <button type="button" class="toggle-button" onclick="toggleCodeSnippet('snippet4')">Show snippet</button>
+                <button type="button" class="copy-button" onclick="copyCodeSnippet('snippet4')">Copy</button>
+                <pre id="snippet4" class="code-snippet"><code class="language-css">
+/* CSS */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0; /* Ensure sidebar appears on the right side */
+    background-color: #111;
+    overflow-x: hidden;
+    transition: width 0.5s ease-in-out; /* Ensure transition is applied to width */
+    padding-top: 60px;
+}
+
+.sidebar.open {
+    width: 250px; /* Set the width when the sidebar is open */
+}
+
+.sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.openbtn {
+    font-size: 1.5em;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    transition: 0.3s;
+}
+
+.openbtn:hover {
+    background-color: #444;
+}
+
+/* JavaScript */
+function openNav() {
+    document.getElementById("mySidebar").classList.add("open");
+}
+
+function closeNav() {
+    document.getElementById("mySidebar").classList.remove("open");
+}
+                </code></pre>
+            </div>
+        </div>
+        <div class="row">
+            <div class="demo">
+                <button class="openbtn" onclick="event.stopPropagation(); openOverlayNav()">☰ Open Overlay Menu</button>
+                <div id="myOverlayNav" class="overlay-nav" onclick="event.stopPropagation()">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeOverlayNav()">×</a>
+                    <a href="#">Home</a>
+                    <a href="#">About</a>
+                    <a href="#">Services</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+            <div class="code">
+                <button type="button" class="toggle-button" onclick="toggleCodeSnippet('snippet5')">Show snippet</button>
+                <button type="button" class="copy-button" onclick="copyCodeSnippet('snippet5')">Copy</button>
+                <pre id="snippet5" class="code-snippet"><code class="language-css">
+/* CSS */
+.overlay-nav {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.9); /* Black with 90% opacity */
+    overflow-x: hidden;
+    transition: opacity 0.5s ease-in-out; /* Ensure transition is applied to opacity */
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+}
+
+.overlay-nav.open {
+    display: flex;
+    opacity: 1;
+}
+
+.overlay-nav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+    margin: 10px 0;
+}
+
+.overlay-nav a:hover {
+    color: #f1f1f1;
+}
+
+.overlay-nav .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+/* JavaScript */
+function openOverlayNav() {
+    const overlayNav = document.getElementById("myOverlayNav");
+    overlayNav.style.display = "flex";
+    setTimeout(() => {
+        overlayNav.style.opacity = "1";
+    }, 10); // Small delay to ensure the transition works
+}
+
+function closeOverlayNav() {
+    const overlayNav = document.getElementById("myOverlayNav");
+    overlayNav.style.opacity = "0";
+    setTimeout(() => {
+        overlayNav.style.display = "none";
+    }, 500); // Match the transition duration
+}
+                </code></pre>
+            </div>
+        </div>
     </div>
-    <!-- Include footer -->
-    <div id="footer-placeholder"></div>
+    <div id="footer"></div>
+    <div id="overlay" class="overlay" onclick="closeOverlayNav()"></div>
 </body>
 </html>

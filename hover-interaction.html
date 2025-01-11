@@ -7,20 +7,17 @@
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
-<body>
-    <!-- Include header -->
-    <div id="header-placeholder"></div>
+<body class="full-height">
+    <div id="header"></div>
     <div class="content">
         <div class="row">
             <div class="demo">
-                <div class="container">
-                    <div class="animated-box">Hover me!</div>
-                </div>
+                <div class="animated-box">Hover rotate right</div>
             </div>
             <div class="code">
-                <button type="button" class="toggle-button">Show snippet</button>
-                <button type="button" class="copy-button">Copy</button>
-                <pre class="code-snippet"><code class="language-css">
+                <button type="button" class="toggle-button" onclick="toggleCodeSnippet('snippet1')">Show snippet</button>
+                <button type="button" class="copy-button" onclick="copyCodeSnippet('snippet1')">Copy</button>
+                <pre id="snippet1" class="code-snippet"><code class="language-css">
 .animated-box {
     width: 100px;
     height: 100px;
@@ -28,9 +25,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     color: white;
     font-weight: bold;
     transition: transform 0.3s ease-in-out;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .animated-box:hover {
@@ -41,26 +41,28 @@
         </div>
         <div class="row">
             <div class="demo">
-                <div class="hover-box-2">Hover me too!</div>
+                <div class="animated-box-2">Hover darker color</div>
             </div>
             <div class="code">
-                <button type="button" class="toggle-button">Show snippet</button>
-                <button type="button" class="copy-button">Copy</button>
-                <pre class="code-snippet"><code class="language-css">
-.hover-box-2 {
+                <button type="button" class="toggle-button" onclick="toggleCodeSnippet('snippet2')">Show snippet</button>
+                <button type="button" class="copy-button" onclick="copyCodeSnippet('snippet2')">Copy</button>
+                <pre id="snippet2" class="code-snippet"><code class="language-css">
+.animated-box-2 {
     width: 100px;
     height: 100px;
     background-color: #e67e22;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     color: white;
     font-weight: bold;
-    margin-left: 20px;
     transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.hover-box-2:hover {
+.animated-box-2:hover {
     background-color: #d35400;
     transform: translateY(-10px);
 }
@@ -69,33 +71,95 @@
         </div>
         <div class="row">
             <div class="demo">
-                <div class="hover-box-3">Hover me as well!</div>
+                <div class="animated-box-3">Hover change opacity</div>
             </div>
             <div class="code">
-                <button type="button" class="toggle-button">Show snippet</button>
-                <button type="button" class="copy-button">Copy</button>
-                <pre class="code-snippet"><code class="language-css">
-.hover-box-3 {
+                <button type="button" class="toggle-button" onclick="toggleCodeSnippet('snippet3')">Show snippet</button>
+                <button type="button" class="copy-button" onclick="copyCodeSnippet('snippet3')">Copy</button>
+                <pre id="snippet3" class="code-snippet"><code class="language-css">
+.animated-box-3 {
     width: 100px;
     height: 100px;
     background-color: #2ecc71;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     color: white;
     font-weight: bold;
-    margin-left: 20px;
     transition: opacity 0.3s ease-in-out;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.hover-box-3:hover {
+.animated-box-3:hover {
     opacity: 0.5;
 }
                 </code></pre>
             </div>
         </div>
+        <div class="row">
+            <div class="demo">
+                <div class="animated-box-4">Hover rotate left</div>
+            </div>
+            <div class="code">
+                <button type="button" class="toggle-button" onclick="toggleCodeSnippet('snippet4')">Show snippet</button>
+                <button type="button" class="copy-button" onclick="copyCodeSnippet('snippet4')">Copy</button>
+                <pre id="snippet4" class="code-snippet"><code class="language-css">
+.animated-box-4 {
+    width: 100px;
+    height: 100px;
+    background-color: #9b59b6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.animated-box-4:hover {
+    transform: rotate(-45deg) scale(1.2);
+    background-color: #8e44ad;
+}
+                </code></pre>
+            </div>
+        </div>
+        <div class="row">
+            <div class="demo">
+                <div class="animated-box-5">Hover offset bigger</div>
+            </div>
+            <div class="code">
+                <button type="button" class="toggle-button" onclick="toggleCodeSnippet('snippet5')">Show snippet</button>
+                <button type="button" class="copy-button" onclick="copyCodeSnippet('snippet5')">Copy</button>
+                <pre id="snippet5" class="code-snippet"><code class="language-css">
+.animated-box-5 {
+    width: 100px;
+    height: 100px;
+    background-color: #1abc9c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.animated-box-5:hover {
+    transform: translateX(20px) scale(1.2);
+    background-color: #16a085;
+}
+                </code></pre>
+            </div>
+        </div>
     </div>
-    <!-- Include footer -->
-    <div id="footer-placeholder"></div>
+    <div id="footer"></div>
+    <div id="overlay" class="overlay"></div>
 </body>
 </html>

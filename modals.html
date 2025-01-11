@@ -7,34 +7,88 @@
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
-<body>
-    <!-- Include header -->
-    <div id="header-placeholder"></div>
+<body class="full-height">
+    <div id="header"></div>
     <div class="content">
         <div class="row">
             <div class="demo">
-                <div class="modals-demo">
-                    <button type="button" class="open-modal">Open Modal</button>
-                    <div class="modal">
-                        <div class="modal-content">
-                            <span class="close-modal">&times;</span>
-                            <p>Modal content goes here.</p>
-                        </div>
-                    </div>
-                </div>
+                <button id="openModalButton" type="button" class="open-modal" onclick="openModal('myModal')">Open Modal</button>
             </div>
             <div class="code">
-                <button type="button" class="toggle-button">Show snippet</button>
-                <button type="button" class="copy-button">Copy</button>
-                <pre class="code-snippet"><code class="language-css">
-.modals-demo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 60vh;
+                <button id="toggleSnippet1" type="button" class="toggle-button" onclick="toggleCodeSnippet('snippet1')">Show snippet</button>
+                <button id="copySnippet1" type="button" class="copy-button" onclick="copyCodeSnippet('snippet1')">Copy</button>
+                <pre id="snippet1" class="code-snippet"><code class="language-css">
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+                </code></pre>
+            </div>
+        </div>
+        <div class="row">
+            <div class="demo">
+                <button id="openFullScreenModalButton" type="button" class="open-modal" onclick="openModal('fullScreenModal')">Open Full-Screen Modal</button>
+            </div>
+            <div class="code">
+                <button id="toggleSnippet2" type="button" class="toggle-button" onclick="toggleCodeSnippet('snippet2')">Show snippet</button>
+                <button id="copySnippet2" type="button" class="copy-button" onclick="copyCodeSnippet('snippet2')">Copy</button>
+                <pre id="snippet2" class="code-snippet"><code class="language-css">
+.modal.full-screen {
+    width: 100%;
+    height: 100%;
+}
+                </code></pre>
+            </div>
+        </div>
+        <div class="row">
+            <div class="demo">
+                <button id="openSlideInModalButton" type="button" class="open-modal" onclick="openModal('slideInModal')">Open Slide-In Modal</button>
+            </div>
+            <div class="code">
+                <button id="toggleSnippet3" type="button" class="toggle-button" onclick="toggleCodeSnippet('snippet3')">Show snippet</button>
+                <button id="copySnippet3" type="button" class="copy-button" onclick="copyCodeSnippet('snippet3')">Copy</button>
+                <pre id="snippet3" class="code-snippet"><code class="language-css">
+.modal.slide-in {
+    right: -100%;
+    transition: right 0.3s ease-in-out;
 }
 
-.open-modal {
+.modal.slide-in.show {
+    right: 0;
+}
+                </code></pre>
+            </div>
+        </div>
+        <div class="row">
+            <div class="demo">
+                <button id="openFormModalButton" type="button" class="open-modal" onclick="openModal('formModal')">Open Modal with Form</button>
+            </div>
+            <div class="code">
+                <button id="toggleSnippet4" type="button" class="toggle-button" onclick="toggleCodeSnippet('snippet4')">Show snippet</button>
+                <button id="copySnippet4" type="button" class="copy-button" onclick="copyCodeSnippet('snippet4')">Copy</button>
+                <pre id="snippet4" class="code-snippet"><code class="language-css">
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-content form label {
+    font-weight: bold;
+}
+
+.modal-content form input {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.modal-content form button {
     padding: 10px 20px;
     font-size: 1em;
     background-color: #3498db;
@@ -46,42 +100,60 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.open-modal:hover {
+.modal-content form button:hover {
     background-color: #2980b9;
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    align-items: center;
-    justify-content: center;
-}
-
-.modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    position: relative;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.close-modal {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 1.5em;
-    cursor: pointer;
 }
                 </code></pre>
             </div>
         </div>
     </div>
-    <!-- Include footer -->
-    <div id="footer-placeholder"></div>
+    <div id="footer"></div>
+
+    <!-- Modals -->
+    <div class="modal" id="myModal" >
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('myModal')">&times;</span>
+            <h2>This is the modal title</h2>
+            <p>Modal content goes here. You can add more details or information in this section.</p>
+            <br/>
+            <button id="closeMyModalButton" type="button" class="close-modal-button" onclick="closeModal('myModal')">Close</button>
+        </div>
+    </div>
+
+    <div class="modal full-screen" id="fullScreenModal" >
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('fullScreenModal')">&times;</span>
+            <h2>Full-Screen Modal</h2>
+            <p>This modal covers the entire screen.</p>
+            <br/>
+            <button id="closeFullScreenModalButton" type="button" class="close-modal-button" onclick="closeModal('fullScreenModal')">Close</button>
+        </div>
+    </div>
+
+    <div class="modal slide</div>-in" id="slideInModal" >
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('slideInModal')">&times;</span>
+            <h2>Slide-In Modal</h2>
+            <p>This modal slides in from the right.</p>
+            <br/>
+            <button id="closeSlideInModalButton" type="button" class="close-modal-button" onclick="closeModal('slideInModal')">Close</button>
+        </div>
+    </div>
+
+    <div class="modal" id="formModal" >
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('formModal')">&times;</span>
+            <h2>Form Modal</h2>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+                <button id="submitFormButton" type="submit">Submit</button>
+            </form>
+            <br/>
+            <button id="closeFormModalButton" type="button" class="close-modal-button" onclick="closeModal('formModal')">Close</button>
+        </div>
+    </div>
 </body>
 </html>

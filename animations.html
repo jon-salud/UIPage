@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
-<body>
+<body class="full-height">
     <!-- Include header -->
-    <div id="header-placeholder"></div>
+    <div id="header"></div>
     <div class="content">
         <div class="demo">
             <div class="animations-demo">
@@ -17,9 +17,9 @@
             </div>
         </div>
         <div class="code">
-            <button type="button" class="toggle-button">Show snippet</button>
-            <button type="button" class="copy-button">Copy</button>
-            <pre class="code-snippet"><code class="language-css">
+            <button type="button" class="toggle-button" onclick="toggleCodeSnippet('snippet1')">Show snippet</button>
+            <button type="button" class="copy-button" onclick="copyCodeSnippet('snippet1')">Copy</button>
+            <pre id="snippet1" class="code-snippet"><code class="language-css">
 .animations-demo {
     display: flex;
     align-items: center;
@@ -52,6 +52,6 @@
         </div>
     </div>
     <!-- Include footer -->
-    <div id="footer-placeholder"></div>
+    <div id="footer"></div>
 </body>
 </html>

@@ -1,15 +1,28 @@
 // Function to fetch and include header and footer
 function includeHeaderFooter() {
-    fetch('/header.html')
-        .then(response => response.text())
+    fetch('header.html')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.text();
+        })
         .then(data => {
             setInnerHTML('header', data);
-        });
-    fetch('/footer.html')
-        .then(response => response.text())
+        })
+        .catch(error => console.error('Error fetching header:', error));
+
+    fetch('footer.html')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.text();
+        })
         .then(data => {
             setInnerHTML('footer', data);
-        });
+        })
+        .catch(error => console.error('Error fetching footer:', error));
 }
 
 // Function to set the page title
@@ -23,7 +36,12 @@ function setPageTitle(title) {
 
 // Function to toggle code snippet visibility
 function toggleCodeSnippet(snippetId) {
-    toggleElement(snippetId);
+    const snippet = document.getElementById(snippetId);
+    if (snippet.style.display === 'none' || snippet.style.display === '') {
+        snippet.style.display = 'block';
+    } else {
+        snippet.style.display = 'none';
+    }
 }
 
 // Function to copy code snippet to clipboard
@@ -43,7 +61,14 @@ function openSidebar() {
 
 // Function to close sidebar navigation
 function closeSidebar() {
-    hideElement('sidebar');
+    const sidebar = document.getElementById("sidebar");
+    sidebar.classList.remove("open");
+}
+
+// Function to toggle the sidebar
+function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    sidebar.classList.toggle("open");
 }
 
 // Function to show an element
@@ -79,13 +104,99 @@ function setInnerHTML(elementId, html) {
     const element = document.getElementById(elementId);
     if (element) {
         element.innerHTML = html;
+        console.log(`Set innerHTML for ${elementId}`);
+    } else {
+        console.error(`Element with ID ${elementId} not found`);
     }
 }
 
-// Function to add an event listener to an element
-function addEventListener(elementId, event, handler) {
-    const element = document.getElementById(elementId);
-    if (element) {
-        element.addEventListener(event, handler);
+// Function to open sidebar navigation
+function openNav() {
+    document.getElementById("mySidebar").classList.add("open");
+}
+
+// Function to close sidebar navigation
+function closeNav() {
+    document.getElementById("mySidebar").classList.remove("open");
+}
+
+function openOverlayNav() {
+    document.getElementById("myOverlayNav").classList.add("open");
+}
+
+function closeOverlayNav() {
+    document.getElementById("myOverlayNav").classList.remove("open");
+}
+
+function openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal.classList.contains('slide-in')) {
+        modal.classList.add('show');
+    } else {
+        modal.style.display = "flex";
     }
 }
+
+function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal.classList.contains('slide-in')) {
+        modal.classList.remove('show');
+    } else {
+        modal.style.display = "none";
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM fully loaded and parsed');
+    includeHeaderFooter();
+
+    // Add event listener to close sidebar when clicking outside of it
+    const overlay = document.getElementById("overlay");
+    if (overlay) {
+        overlay.addEventListener("click", closeNav);
+    }
+
+    // Add event listener to close overlay navigation when clicking outside of it
+    const overlayNav = document.getElementById("myOverlayNav");
+    if (overlayNav) {
+        overlayNav.addEventListener("click", (event) => {
+            if (event.target === overlayNav) {
+                closeOverlayNav();
+            }
+        });
+    }
+
+    // Add event listener to close modal when clicking outside of it
+    const modals = document.querySelectorAll('.modal');
+    modals.forEach(modal => {
+        window.addEventListener("click", (event) => {
+            if (event.target === modal) {
+                closeModal(modal.id);
+            }
+        });
+    });
+
+    // Ensure the element with ID 'click' exists before adding the event listener
+    const clickElement = document.getElementById("click");
+    if (clickElement) {
+        clickElement.addEventListener("click", () => {
+            console.log("Element with ID 'click' was clicked.");
+        });
+    }
+
+    document.addEventListener('click', (event) => {
+        const sidebar = document.getElementById("sidebar");
+        if (sidebar.classList.contains("open") &&
+            !sidebar.contains(event.target) &&
+            !event.target.closest(".hamburger")) {
+            closeSidebar();
+        }
+    });
+
+    document.addEventListener('keydown', (event) => {
+        const sidebar = document.getElementById("sidebar");
+        if (event.key === "Escape" && sidebar.classList.contains("open")) {
+            closeSidebar();
+        }
+    });
+});
