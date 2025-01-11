@@ -14,6 +14,10 @@ header {
     margin: 0;
     padding: 0;
     text-align: left; /* Align title to the left */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #87CEEB; /* Ensure the header has a background color */
 }
 
 h1 {
@@ -60,6 +64,7 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     color: white;
     font-weight: bold;
     transition: transform 0.3s ease-in-out;
@@ -78,9 +83,9 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     color: white;
     font-weight: bold;
-    margin-left: 20px;
     transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -98,9 +103,9 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     color: white;
     font-weight: bold;
-    margin-left: 20px;
     transition: opacity 0.3s ease-in-out;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -117,9 +122,9 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     color: white;
     font-weight: bold;
-    margin-left: 20px;
     transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -137,9 +142,9 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     color: white;
     font-weight: bold;
-    margin-left: 20px;
     transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
