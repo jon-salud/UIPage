@@ -1,6 +1,6 @@
 // Function to fetch and include header and footer
 function includeHeaderFooter() {
-    fetch('header.html')
+    fetch('../pages/header.html')
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -12,17 +12,17 @@ function includeHeaderFooter() {
         })
         .catch(error => console.error('Error fetching header:', error));
 
-    fetch('footer.html')
-        .then(response => {
+    fetch("../pages/footer.html")
+        .then((response) => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             return response.text();
         })
-        .then(data => {
-            setInnerHTML('footer', data);
+        .then((data) => {
+            setInnerHTML("footer", data);
         })
-        .catch(error => console.error('Error fetching footer:', error));
+        .catch((error) => console.error("Error fetching footer:", error));
 }
 
 // Function to set the page title
@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const breadcrumbs = document.getElementById('breadcrumbs');
     if (breadcrumbs) {
         const path = window.location.pathname.split('/').filter(Boolean);
-        let breadcrumbHTML = '<a href="index.html">Home</a>';
+        let breadcrumbHTML = '<a href="../index.html">Home</a>';
         let currentPath = '';
 
         path.forEach((segment, index) => {
