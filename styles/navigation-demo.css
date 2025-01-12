@@ -1,0 +1,123 @@
+/* Navigation Demo */
+.nav-demo ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-demo li {
+    display: inline;
+}
+
+.nav-demo a {
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.nav-demo a:hover {
+    color: #2980b9;
+    transform: translateY(-5px);
+}
+
+.nav-demo-2 ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nav-demo-2 li {
+    display: block;
+}
+
+.nav-demo-2 a {
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    padding: 10px;
+    background-color: #ecf0f1;
+    border-radius: 5px;
+}
+
+.nav-demo-2 a:hover {
+    color: #2980b9;
+    transform: translateX(10px);
+}
+
+.nav-demo-3 ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #2c3e50;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.nav-demo-3 li {
+    display: block;
+}
+
+.nav-demo-3 a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    padding: 10px;
+    background-color: #34495e;
+    border-radius: 5px;
+}
+
+.nav-demo-3 a:hover {
+    color: #ecf0f1;
+    transform: translateX(10px);
+}
+
+.overlay-nav {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.9); /* Black with 90% opacity */
+    overflow-x: hidden;
+    transition: opacity 0.5s ease-in-out; /* Ensure transition is applied to opacity */
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+}
+
+.overlay-nav.open {
+    display: flex;
+    opacity: 1;
+}
+
+.overlay-nav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+    margin: 10px 0;
+}
+
+.overlay-nav a:hover {
+    color: #f1f1f1;
+}
+
+.overlay-nav .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
