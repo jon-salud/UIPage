@@ -130,7 +130,10 @@ function closeOverlayNav() {
 
 function openModal(modalId) {
     const modal = document.getElementById(modalId);
+    const overlay = document.getElementById(`overlay-${modalId}`);
+    
     if (modal.classList.contains('slide-in')) {
+        overlay.classList.add('show');
         modal.classList.add('show');
     } else {
         modal.style.display = "flex";
@@ -139,7 +142,10 @@ function openModal(modalId) {
 
 function closeModal(modalId) {
     const modal = document.getElementById(modalId);
+    const overlay = document.getElementById(`overlay-${modalId}`);
+    
     if (modal.classList.contains('slide-in')) {
+        overlay.classList.remove('show');
         modal.classList.remove('show');
     } else {
         modal.style.display = "none";
@@ -172,6 +178,17 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener("click", (event) => {
             if (event.target === modal) {
                 closeModal(modal.id);
+            }
+        });
+    });
+
+    // Update modal overlay click handling
+    const modalOverlays = document.querySelectorAll('.modal-overlay');
+    modalOverlays.forEach(overlay => {
+        overlay.addEventListener('click', (event) => {
+            if (event.target === overlay) {
+                const modalId = overlay.getAttribute('id').replace('overlay-', '');
+                closeModal(modalId);
             }
         });
     });
