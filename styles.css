@@ -48,29 +48,33 @@ p {
 
 .main-card-container {
     display: flex;
-    justify-content: space-around;
-    width: 80%;
-    overflow-wrap: anywhere;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
 }
 
 .main-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 200px;
-    padding: 20px;
-    background-color: #8bbcb8;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
-    -webkit-text-fill-color: #f8fffe;
+    height: 100px;
+    margin: 10px;
+    padding: 15px 25px;
+    font-size: 1.2em;
+    background-color: #a3d5d3; /* Calming teal color */
+    color: #333; /* Darker text color for contrast */
+    text-decoration: none;
+    border-radius: 10px; /* Make the links look like cards */
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow to look like cards */
     text-align: center;
-    margin: 3px;
-    flex-wrap: true;
 }
 
 .main-card:hover {
-    transform:matrix(1.1,0,0,1.1,0,0);
-    background-color: #7eaaa6;
+    background-color: #8bbcb8; /* Slightly darker teal on hover */
+    transform: translateY(-5px); /* Move up slightly on hover */
 }
-
 
 /* Hover Demo */
 .hover-demo {
@@ -404,15 +408,17 @@ button:hover {
     left: 0;
     background-color: rgba(0, 0, 0, 0.9); /* Black with 90% opacity */
     overflow-x: hidden;
-    transition: 0.5s;
+    transition: opacity 0.5s ease-in-out; /* Ensure transition is applied to opacity */
     display: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    opacity: 0;
 }
 
 .overlay-nav.open {
     display: flex;
+    opacity: 1;
 }
 
 .overlay-nav a {
