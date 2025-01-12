@@ -282,18 +282,12 @@ function closeNav() {
 /* JavaScript */
 function openOverlayNav() {
     const overlayNav = document.getElementById("myOverlayNav");
-    overlayNav.style.display = "flex";
-    setTimeout(() => {
-        overlayNav.style.opacity = "1";
-    }, 10); // Small delay to ensure the transition works
+    overlayNav.classList.add("open");
 }
 
 function closeOverlayNav() {
     const overlayNav = document.getElementById("myOverlayNav");
-    overlayNav.style.opacity = "0";
-    setTimeout(() => {
-        overlayNav.style.display = "none";
-    }, 500); // Match the transition duration
+    overlayNav.classList.remove("open");
 }
                 </code></pre>
             </div>
