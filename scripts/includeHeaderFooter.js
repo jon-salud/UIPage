@@ -11,9 +11,26 @@ async function includeHTML(elementId, filePath) {
 
 // Function to load header and footer
 function loadHeaderFooter() {
-    includeHTML('header', 'header.html');
     includeHTML('footer', 'footer.html');
 }
 
 // Load header and footer when DOM is fully loaded
-document.addEventListener('DOMContentLoaded', loadHeaderFooter);
+document.addEventListener('DOMContentLoaded', function() {
+    // Determine the correct path to header.html based on current page location
+    const isIndexPage = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/');
+    const headerPath = isIndexPage ? './pages/header.html' : 'header.html';
+
+    // Load header
+    fetch(headerPath)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header').innerHTML = data;
+            // Run any scripts that were in the header
+            Array.from(document.getElementById('header').getElementsByTagName('script')).forEach(script => {
+                eval(script.innerHTML);
+            });
+        })
+        .catch(error => console.error('Error loading header:', error));
+
+    loadHeaderFooter();
+});

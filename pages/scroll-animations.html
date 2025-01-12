@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Animations</title>
+    <link rel="stylesheet" href="../styles/general.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="../styles/sidebar.css">
+    <link rel="stylesheet" href="../styles/footer.css">
+    <link rel="stylesheet" href="../styles/scroll-animations.css">
+</head>
+<body>
+    <div id="header"></div>
+
+    <section class="parallax-section">
+        <div class="parallax-bg"></div>
+        <div class="fade-element">
+            <h1>Scroll Animation Effects</h1>
+            <p>Scroll down to see more animations</p>
+        </div>
+        <div class="snippet-container">
+            <button class="snippet-toggle">View Code</button>
+            <div class="snippet-content">
+                <button class="copy-button">Copy</button>
+                <pre><code class="language-css">
+.parallax-section {
+    position: relative;
+    overflow: hidden;
+    color: white;
+    text-align: center;
+}
+
+.parallax-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/parallax-bg.png');
+    background-size: cover;
+    transform: translateZ(-1px) scale(2);
+    z-index: -1;
+}</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="fade-section">
+        <div class="fade-element">
+            <h2>Fade In Effect</h2>
+            <p>This content smoothly fades in as you scroll</p>
+            <p>Keep scrolling to see more effects!</p>
+        </div>
+        <div class="snippet-container">
+            <button class="snippet-toggle">View Code</button>
+            <div class="snippet-content">
+                <button class="copy-button">Copy</button>
+                <pre><code class="language-css">.fade-element {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-element.visible {
+    opacity: 1;
+    transform: translateY(0);
+}</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="cards-section">
+        <div class="cards-assembly">
+            <div class="card">
+                <h3>Card One</h3>
+                <p>This card appears with a scale effect</p>
+            </div>
+            <div class="card">
+                <h3>Card Two</h3>
+                <p>Each card has a random delay</p>
+            </div>
+            <div class="card">
+                <h3>Card Three</h3>
+                <p>Creating an assembly effect</p>
+            </div>
+            <div class="card">
+                <h3>Card Four</h3>
+                <p>As you scroll down the page</p>
+            </div>
+        </div>
+        <div class="snippet-container">
+            <button class="snippet-toggle">View Code</button>
+            <div class="snippet-content">
+                <button class="copy-button">Copy</button>
+                <pre><code class="language-css">.card {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.6s ease;
+}
+
+.card.visible {
+    opacity: 1;
+    transform: scale(1);
+}</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide-section">
+        <div class="slide-element">
+            <h2>Slide In Animation</h2>
+            <p>Elements slide in from the side</p>
+        </div>
+        <div class="snippet-container">
+            <button class="snippet-toggle">View Code</button>
+            <div class="snippet-content">
+                <button class="copy-button">Copy</button>
+                <pre><code class="language-css">.slide-element {
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: all 0.8s ease;
+}
+
+.slide-element.visible {
+    opacity: 1;
+    transform: translateX(0);
+}</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="rotate-section">
+        <div class="rotate-element">
+            <h2>3D Rotation Effect</h2>
+            <p>Elements rotate into view</p>
+        </div>
+        <div class="snippet-container">
+            <button class="snippet-toggle">View Code</button>
+            <div class="snippet-content">
+                <button class="copy-button">Copy</button>
+                <pre><code class="language-css">.rotate-element {
+    perspective: 1000px;
+    opacity: 0;
+    transform: rotateY(-90deg);
+    transition: all 0.8s ease;
+}
+
+.rotate-element.visible {
+    opacity: 1;
+    transform: rotateY(0);
+}</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <div id="overlay" class="overlay"></div>
+    <footer></footer>
+
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/includeHeaderFooter.js"></script>
+    <script src="../scripts/scroll-animations.js"></script>
+</body>
+</html>
