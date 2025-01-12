@@ -2,17 +2,32 @@
 
 ## Description
 
-UIPage is a demonstration project showcasing various UI components and interactions using HTML, CSS, and JavaScript. The project includes examples of hover interactions, click interactions, form elements, navigation, cards, modals, animations, and grid layouts. It is designed to illustrate the power and flexibility of CSS and JavaScript in creating interactive and responsive web pages.
+UIPage is a demonstration project showcasing various UI components and interactions using HTML, CSS, and JavaScript. The project includes examples of hover interactions, click interactions, form elements, navigation, cards, modals, animations, grid layouts and scroll animations. It is designed to illustrate the power and flexibility of CSS and JavaScript in creating interactive and responsive web pages.
 
 ## Folder Structure
 
 ```text
 UIPage/
-├── .github/worflows
+├── .github/workflows
 │   └── gh-pages.yml
+├── images/
+│   └── parallax-bg.png
+├── pages/
+│   ├── animations.html
+│   ├── cards.html
+│   ├── click-interaction.html
+│   ├── footer.html
+│   ├── form-elements.html
+│   ├── grid-layouts.html
+│   ├── header.html
+│   ├── hover-interaction.html
+│   ├── modals.html
+│   ├── navigation.html
+│   └── scroll-animations.html
 ├── scripts/
 │   ├── includeHeaderFooter.js
-│   └── script.js
+│   ├── script.js
+│   └── scroll-animations.js
 ├── styles/
 │   ├── animation-demo.css
 │   ├── cards.css
@@ -25,20 +40,13 @@ UIPage/
 │   ├── hover-demo.css
 │   ├── main-cards.css
 │   ├── modals-demo.css
-│   └── navigation-demo.css
+│   ├── navigation-demo.css
+│   ├── scroll-animations.css
+│   ├── sidebar.css
+│   └── styles.css
 ├── .env
 ├── .gitignore
-├── animations.html
-├── cards.html
-├── click-interaction.html
-├── footer.html
-├── form-elements.html
-├── grid-layouts.html
-├── header.html
-├── hover-interaction.html
 ├── index.html
-├── modals.html
-├── navigation.html
 └── README.md
 ```
 
