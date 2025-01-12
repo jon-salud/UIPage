@@ -1,0 +1,57 @@
+/* headers.css */
+:root {
+    --header-height: 60px; /* Define a CSS variable for the header height */
+}
+
+header {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center; 
+    top: 0;
+    z-index: 1000;
+    background-color: #87CEEB; /* Ensure the header has a background color */
+    position: fixed; /* Make the header fixed */
+    height: var(--header-height); /* Use the CSS variable for header height */
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #87CEEB; /* Calming sky blue color */
+    color: white;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.title-container h1, .title-container h2 {
+    margin: 0;
+    text-align: center;
+}
+
+.hamburger {
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hamburger {
+        align-self: flex-end;
+    }
+}

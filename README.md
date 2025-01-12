@@ -4,6 +4,44 @@
 
 UIPage is a demonstration project showcasing various UI components and interactions using HTML, CSS, and JavaScript. The project includes examples of hover interactions, click interactions, form elements, navigation, cards, modals, animations, and grid layouts. It is designed to illustrate the power and flexibility of CSS and JavaScript in creating interactive and responsive web pages.
 
+## Folder Structure
+
+```text
+UIPage/
+├── .github/worflows
+│   └── gh-pages.yml
+├── scripts/
+│   ├── includeHeaderFooter.js
+│   └── script.js
+├── styles/
+│   ├── animation-demo.css
+│   ├── cards.css
+│   ├── click-demo.css
+│   ├── footer.css
+│   ├── form-demo.css
+│   ├── general.css
+│   ├── grid-demo.css
+│   ├── header.css
+│   ├── hover-demo.css
+│   ├── main-cards.css
+│   ├── modals-demo.css
+│   └── navigation-demo.css
+├── .env
+├── .gitignore
+├── animations.html
+├── cards.html
+├── click-interaction.html
+├── footer.html
+├── form-elements.html
+├── grid-layouts.html
+├── header.html
+├── hover-interaction.html
+├── index.html
+├── modals.html
+├── navigation.html
+└── README.md
+```
+
 ## Installation
 
 Instructions on how to install and set up your project.

@@ -1,0 +1,79 @@
+/* general.css */
+:root {
+    --header-height: 60px; /* Define a CSS variable for the header height */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the body has a minimum height */
+    padding-top: var(--header-height); /* Use the CSS variable for top padding */
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin: 0;
+}
+
+p {
+    color: #707070;
+    margin: 0;
+}
+
+/* header.css */
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9em;
+    color: white;
+}
+
+.breadcrumbs a {
+    color: white;
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+/* footer.css */
+footer {
+    margin-top: auto;
+    text-align: center;
+    width: 100%;
+    background-color: #87CEEB; /* Calming sky blue color */
+    color: white;
+    padding: 10px 0;
+}
+
+.footer-link {
+    text-decoration: none; /* Remove underline */
+    color: white; /* Ensure the link color matches the footer text color */
+}
+
+.footer-link:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+
+/* main-cards.css */
+.full-height {
+    min-height: calc(100vh - 60px); /* Ensure the element has a minimum height of 100vh */
+}
+
+/* title-link.css */
+.title-link {
+    text-decoration: none; /* Remove underline */
+}
+
+.title-link h1:hover {
+    color: #2980b9; /* Change color on hover */
+    transform: translateY(-5px) scale(1.1); /* Scale up on hover */
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Add transition */
+}

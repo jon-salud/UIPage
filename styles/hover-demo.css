@@ -1,0 +1,114 @@
+/* Hover Demo */
+.hover-demo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.animated-box, .animated-box-2, .animated-box-3, .animated-box-4, .animated-box-5 {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    align-items: center;
+}
+
+.animated-box {
+    width: 100px;
+    height: 100px;
+    background-color: #3498db;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    transition: transform 0.3s ease-in-out;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.animated-box:hover {
+    transform: scale(1.5) rotate(45deg);
+}
+
+.animated-box-2 {
+    width: 100px;
+    height: 100px;
+    background-color: #e67e22;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.animated-box-2:hover {
+    background-color: #d35400;
+    transform: translateY(-10px);
+}
+
+.animated-box-3 {
+    width: 100px;
+    height: 100px;
+    background-color: #2ecc71;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.animated-box-3:hover {
+    opacity: 0.5;
+}
+
+.animated-box-4 {
+    width: 100px;
+    height: 100px;
+    background-color: #9b59b6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.animated-box-4:hover {
+    transform: rotate(-45deg) scale(1.2);
+    background-color: #8e44ad;
+}
+
+.animated-box-5 {
+    width: 100px;
+    height: 100px;
+    background-color: #1abc9c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.animated-box-5:hover {
+    transform: translateX(20px) scale(1.2);
+    background-color: #16a085;
+}
