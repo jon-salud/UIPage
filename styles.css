@@ -1,4 +1,8 @@
 /* General Styles */
+:root {
+    --header-height: 60px; /* Define a CSS variable for the header height */
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -7,6 +11,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh; /* Ensure the body has a minimum height */
+    padding-top: var(--header-height); /* Use the CSS variable for top padding */
 }
 
 header {
@@ -17,6 +22,8 @@ header {
     top: 0;
     z-index: 1000;
     background-color: #87CEEB; /* Ensure the header has a background color */
+    position: fixed; /* Make the header fixed */
+    height: var(--header-height); /* Use the CSS variable for header height */
 }
 
 h1 {
@@ -38,6 +45,32 @@ p {
     color: #707070;
     margin: 0;
 }
+
+.main-card-container {
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    overflow-wrap: anywhere;
+}
+
+.main-card {
+    width: 200px;
+    padding: 20px;
+    background-color: #8bbcb8;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    -webkit-text-fill-color: #f8fffe;
+    text-align: center;
+    margin: 3px;
+    flex-wrap: true;
+}
+
+.main-card:hover {
+    transform:matrix(1.1,0,0,1.1,0,0);
+    background-color: #7eaaa6;
+}
+
 
 /* Hover Demo */
 .hover-demo {
@@ -560,9 +593,41 @@ button:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.masonry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+}
+
+.masonry-item {
+    background-color: #e74c3c;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5em;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.responsive-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.responsive-item {
+    background-color: #2ecc71;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5em;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 /* Full Height */
 .full-height {
-    min-height: 100vh; /* Ensure the element has a minimum height of 100vh */
+    min-height: calc(100vh - 60px); /* Ensure the element has a minimum height of 100vh */
 }
 
 /* Media Queries */
@@ -597,12 +662,27 @@ button:hover {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    align-items: center; /* Center the table horizontally */
+    justify-content: center; /* Center the table vertically */
+    flex-grow: 1; /* Ensure the content takes up available space */
+    width: 100%; /* Ensure the content takes the full width */
+    padding-top: var(--header-height); /* Add padding to prevent content from being hidden behind the header */
 }
 
 .row {
     display: flex;
-    width: 100%;
+    width: 80%; /* Adjust the width to center the table */
+    max-width: 1200px; /* Set a maximum width for the table */
     gap: 20px;
+    border-bottom: 2px solid #d8dadb; /* Add bottom border */
+    padding-top: 10px; /* Add padding to separate content from borders */
+    padding-bottom: 10px; /* Add padding to separate content from borders */
+    margin-top: 0; /* Remove top margin */
+    margin-bottom: 0; /* Remove bottom margin */
+}
+
+.row:first-of-type {
+    border-top: 2px solid #d8dadb; /* Add top border to the first row */
 }
 
 .demo {
@@ -665,7 +745,7 @@ button:hover {
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 1;
+    z-index: 1001; /* Ensure sidebar is over the header */
     top: 0;
     right: 0; /* Ensure sidebar appears on the right side */
     background-color: #111;
@@ -862,4 +942,42 @@ button:hover {
     border-color: #000000;
     border-style: solid;
     opacity: 0.9;
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9em;
+    color: white;
+}
+
+.breadcrumbs a {
+    color: white;
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+/* Title Link */
+.title-link {
+    text-decoration: none; /* Remove underline */
+}
+
+.title-link h1:hover {
+    color: #2980b9; /* Change color on hover */
+    transform: translateY(-5px) scale(1.1); /* Scale up on hover */
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Add transition */
+}
+
+.footer-link {
+    text-decoration: none; /* Remove underline */
+    color: white; /* Ensure the link color matches the footer text color */
+}
+
+.footer-link:hover {
+    text-decoration: underline; /* Add underline on hover */
 }

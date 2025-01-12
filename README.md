@@ -2,23 +2,7 @@
 
 ## Description
 
-A brief description of your project.
-
-## Folder Structure
-
-UIPage/
-├── src/                # Source files
-│   ├── components/     # React components
-│   ├── assets/         # Static assets (images, fonts, etc.)
-│   ├── styles/         # CSS/Sass files
-│   ├── utils/          # Utility functions
-│   └── index.js        # Entry point
-├── public/             # Public files
-│   └── index.html      # HTML template
-├── tests/              # Test files
-├── package.json        # NPM package configuration
-├── README.md           # Project README
-└── FOLDER_STRUCTURE.md # Folder structure description
+UIPage is a demonstration project showcasing various UI components and interactions using HTML, CSS, and JavaScript. The project includes examples of hover interactions, click interactions, form elements, navigation, cards, modals, animations, and grid layouts. It is designed to illustrate the power and flexibility of CSS and JavaScript in creating interactive and responsive web pages.
 
 ## Installation
 
@@ -26,31 +10,23 @@ Instructions on how to install and set up your project.
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/UIPage.git
+git clone https://github.com/jon-salud/UIPage.git
 
 # Navigate to the project directory
 cd UIPage
-
-# Install the project dependencies
-npm install
 ```
 
 ## Usage
 
-Instructions on how to use your project.
+Open the `index.html` file in your web browser to view the project.
+
+## Deployment
+
+Instructions on how to deploy your project to GitHub Pages.
 
 ```bash
-# Start the development server
-npm start
-```
-
-## Running Tests
-
-Instructions on how to run tests.
-
-```bash
-# Run the tests
-npm test
+# Push changes to the main branch
+git push origin main
 ```
 
 ## Contributing
@@ -66,4 +42,4 @@ Guidelines for contributing to your project.
 
 ## License
 
-Information about the project's license.
+This project is licensed under the MIT License.
