@@ -9,11 +9,6 @@ async function includeHTML(elementId, filePath) {
     }
 }
 
-// Function to load header and footer
-function loadHeaderFooter() {
-    includeHTML('footer', 'footer.html');
-}
-
 // Load header and footer when DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     // First load required stylesheets
@@ -36,29 +31,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // After all styles are loaded, then load the header and footer
+    // After all styles are loaded, then load the components
     Promise.all(stylePromises)
         .then(() => {
-            // Load header
-            fetch('../components/header-pages.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('header').innerHTML = data;
-                    // Initialize menu immediately since menuConfig.js is already loaded
-                    initializeSidebarMenu(false);
-                })
-                .catch(error => console.error('Error loading header:', error));
-
-            // Load footer
-            fetch('../components/footer.html')
-                .then(response => {
-                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                    return response.text();
-                })
-                .then(data => {
-                    document.getElementById('footer').innerHTML = data;
-                })
-                .catch(error => console.error('Error loading footer:', error));
+            return Promise.all([
+                fetch('../components/header-pages.html').then(response => response.text()),
+                fetch('../pages/footer.html').then(response => response.text())
+            ]);
         })
-        .catch(error => console.error('Error loading stylesheets:', error));
+        .then(([headerContent, footerContent]) => {
+            document.getElementById('header').innerHTML = headerContent;
+            document.getElementById('footer').innerHTML = footerContent;
+            if (typeof initializeSidebarMenu === 'function') {
+                initializeSidebarMenu(false);
+            }
+        })
+        .catch(error => console.error('Error:', error));
 });

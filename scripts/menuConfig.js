@@ -21,20 +21,28 @@ function generateMenuLinks(isRoot = true) {
     }).join('\n    ');
 }
 
-function initializeSidebarMenu(isRoot = true) {
+// Ensure menuConfig.js includes icon classes
+function initializeSidebarMenu(isRoot = false) {
     const sidebar = document.getElementById('sidebar');
-    if (sidebar) {
-        // Generate menu HTML
-        const menuHtml = generateMenuLinks(isRoot);
-        
-        // Insert menu items after the close button
-        const closeBtn = sidebar.querySelector('.closebtn');
-        if (closeBtn) {
-            closeBtn.insertAdjacentHTML('afterend', menuHtml);
-        }
-        
-        // Ensure initial state
-        sidebar.style.width = '0';
-        document.querySelector('.sidebar-overlay').style.display = 'none';
-    }
+    const basePath = isRoot ? '' : '../';
+    
+    const menuItems = [
+        { href: basePath + 'index.html', text: 'Home', icon: 'fas fa-home' },
+        { href: basePath + 'pages/hover-interaction.html', text: 'Hover Interaction', icon: 'fas fa-hand-pointer' },
+        { href: basePath + 'pages/click-interaction.html', text: 'Click Interaction', icon: 'fas fa-mouse' },
+        { href: basePath + 'pages/form-elements.html', text: 'Form Elements', icon: 'fas fa-wpforms' },
+        { href: basePath + 'pages/navigation.html', text: 'Navigation', icon: 'fas fa-compass' },
+        { href: basePath + 'pages/cards.html', text: 'Cards', icon: 'fas fa-credit-card' },
+        { href: basePath + 'pages/modals.html', text: 'Modals', icon: 'fas fa-window-maximize' },
+        { href: basePath + 'pages/animations.html', text: 'Animations', icon: 'fas fa-film' },
+        { href: basePath + 'pages/grid-layouts.html', text: 'Grid Layouts', icon: 'fas fa-th' },
+        { href: basePath + 'pages/scroll-animations.html', text: 'Scroll Animations', icon: 'fas fa-scroll' }
+    ];
+
+    menuItems.forEach(item => {
+        const link = document.createElement('a');
+        link.href = item.href;
+        link.innerHTML = `<i class="${item.icon}"></i>${item.text}`;
+        sidebar.appendChild(link);
+    });
 }

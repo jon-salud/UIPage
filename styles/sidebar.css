@@ -3,7 +3,7 @@
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 1000;
+    z-index: 1002;  /* Increased to be above overlay */
     top: 0;
     right: 0;  /* Changed from left: 0 to right: 0 */
     background-color: #111;
@@ -54,7 +54,7 @@
     right: 0;
     bottom: 0;
     background-color: rgba(0,0,0,0.5);
-    z-index: 999;
+    z-index: 1001;  /* Between sidebar and other content */
 }
 
 .sidebar-overlay.open {

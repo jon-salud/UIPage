@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grid Layouts Page</title>
+    <link rel="stylesheet" href="../styles/general.css">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/sidebar.css">
     <link rel="stylesheet" href="../styles/grid-demo.css">
     <script src="../scripts/script.js" defer></script>
 </head>
-<body class="full-height" onload="includeHeaderFooter()">
-    <!-- Include header -->
+<body class="full-height" ">
     <div id="header"></div>
-
     <div class="content">
         <div class="row">
             <div class="demo">
@@ -115,8 +116,9 @@
             </div>
         </div>
     </div>
-
-    <!-- Include footer -->
     <div id="footer"></div>
+    <div id="overlay" class="overlay"></div>
+    <script src="../scripts/menuConfig.js"></script>
+    <script src="../scripts/includeHeaderFooter.js" defer></script>
 </body>
 </html>
