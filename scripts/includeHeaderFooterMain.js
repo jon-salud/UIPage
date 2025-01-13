@@ -9,32 +9,40 @@ async function includeHTML(elementId, filePath) {
     }
 }
 
-// Function to load header and footer
-function loadHeaderFooter() {
-    includeHTML('footer', 'pages/footer.html');
-}
-
-// Function to include header, sidebar, and styles
-function includeHeaderFooter() {
-    // Correctly fetch and include the header HTML content
-    includeHTML('header', 'pages/header.html');
-
-    // Fetch and include the CSS files separately
-    const stylesheets = ['styles/header.css', 'styles/sidebar.css', 'styles/styles.css'];
-    stylesheets.forEach(path => {
-        fetch(path)
-            .then(response => response.text())
-            .then(data => {
-                const style = document.createElement('style');
-                style.textContent = data;
-                document.head.appendChild(style);
-            })
-            .catch(error => console.error(`Error loading ${path}:`, error));
-    });
-}
-
-// Load header and footer when DOM is fully loaded
+// Load header when DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    loadHeaderFooter();
-    includeHeaderFooter();
+    // First load required stylesheets
+    const stylesheets = [
+        'styles/header.css',
+        'styles/sidebar.css',
+        'styles/footer.css',
+        'styles/styles.css'
+    ];
+
+    // Create a promise for each stylesheet
+    const stylePromises = stylesheets.map(path => {
+        return new Promise((resolve, reject) => {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = path;
+            link.onload = () => resolve();
+            link.onerror = () => reject(`Failed to load ${path}`);
+            document.head.appendChild(link);
+        });
+    });
+
+    // After all styles are loaded, then load the header
+    Promise.all(stylePromises)
+        .then(() => {
+            // Load header from components folder
+            fetch('components/header-root.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header').innerHTML = data;
+                    // Initialize menu immediately since menuConfig.js is already loaded
+                    initializeSidebarMenu(true);
+                })
+                .catch(error => console.error('Error loading header:', error));
+        })
+        .catch(error => console.error('Error loading stylesheets:', error));
 });
