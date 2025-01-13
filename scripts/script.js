@@ -85,11 +85,15 @@ function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
     const overlay = document.querySelector('.sidebar-overlay');
     
-    sidebar.classList.toggle('open');
-    overlay.classList.toggle('open');
-    
-    // Prevent body scrolling when sidebar is open
-    document.body.style.overflow = sidebar.classList.contains('open') ? 'hidden' : '';
+    if (sidebar.style.width === '250px') {
+        sidebar.style.width = '0';
+        overlay.style.display = 'none';
+        document.body.style.marginRight = '0';  // Changed from marginLeft
+    } else {
+        sidebar.style.width = '250px';
+        overlay.style.display = 'block';
+        document.body.style.marginRight = '0';  // Changed from marginLeft
+    }
 }
 
 // Function to show an element

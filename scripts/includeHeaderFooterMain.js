@@ -9,12 +9,7 @@ async function includeHTML(elementId, filePath) {
     }
 }
 
-// Function to load header and footer
-function loadHeaderFooter() {
-    includeHTML('footer', 'footer.html');
-}
-
-// Load header and footer when DOM is fully loaded
+// Load header when DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     // First load required stylesheets
     const stylesheets = [
@@ -36,38 +31,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // After all styles are loaded, then load the header and footer
+    // After all styles are loaded, then load the header
     Promise.all(stylePromises)
         .then(() => {
-            // Load header
+            // Load header from components folder
             fetch('components/header-root.html')
-                .then(response => {
-                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                    return response.text();
-                })
+                .then(response => response.text())
                 .then(data => {
                     document.getElementById('header').innerHTML = data;
-                    // Execute any scripts in the header
-                    Array.from(document.getElementById('header').getElementsByTagName('script'))
-                        .forEach(script => eval(script.innerHTML));
-                    // Initialize sidebar after header is loaded
-                    const sidebar = document.getElementById('sidebar');
-                    if (sidebar) {
-                        sidebar.style.width = '0';
-                    }
+                    // Initialize menu immediately since menuConfig.js is already loaded
+                    initializeSidebarMenu(true);
                 })
                 .catch(error => console.error('Error loading header:', error));
-
-            // Load footer
-            fetch('pages/footer.html')
-                .then(response => {
-                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                    return response.text();
-                })
-                .then(data => {
-                    document.getElementById('footer').innerHTML = data;
-                })
-                .catch(error => console.error('Error loading footer:', error));
         })
         .catch(error => console.error('Error loading stylesheets:', error));
 });

@@ -40,26 +40,17 @@ document.addEventListener('DOMContentLoaded', function() {
     Promise.all(stylePromises)
         .then(() => {
             // Load header
-            fetch('header.html')
-                .then(response => {
-                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                    return response.text();
-                })
+            fetch('../components/header-pages.html')
+                .then(response => response.text())
                 .then(data => {
                     document.getElementById('header').innerHTML = data;
-                    // Execute any scripts in the header
-                    Array.from(document.getElementById('header').getElementsByTagName('script'))
-                        .forEach(script => eval(script.innerHTML));
-                    // Initialize sidebar after header is loaded
-                    const sidebar = document.getElementById('sidebar');
-                    if (sidebar) {
-                        sidebar.style.width = '0';
-                    }
+                    // Initialize menu immediately since menuConfig.js is already loaded
+                    initializeSidebarMenu(false);
                 })
                 .catch(error => console.error('Error loading header:', error));
 
             // Load footer
-            fetch('footer.html')
+            fetch('../components/footer.html')
                 .then(response => {
                     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                     return response.text();

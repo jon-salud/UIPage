@@ -5,14 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UI Objects</title>
     <link rel="stylesheet" href="styles/general.css">
-    <link rel="stylesheet" href="styles/header.css">
-    <link rel="stylesheet" href="styles/footer.css">
     <link rel="stylesheet" href="styles/main-cards.css">
-    <link rel="stylesheet" href="styles/sidebar.css">
     <link rel="stylesheet" href="styles/styles.css">
     <script src="scripts/script.js" defer></script>
 </head>
 <body class="full-height">
+    <!-- Header will be loaded from components/header-root.html -->
     <div id="header"></div>
     <div class="content">
         <div class="main-card-container">
@@ -29,5 +27,9 @@
     </div>
     <div id="footer"></div>
     <div id="overlay" class="overlay"></div>
+    <!-- Load menuConfig before includeHeaderFooterMain -->
+    <script src="scripts/menuConfig.js"></script>
+    <!-- Use main script for root context -->
+    <script src="scripts/includeHeaderFooterMain.js" defer></script>
 </body>
 </html>
