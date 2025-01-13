@@ -1,18 +1,20 @@
 // Function to fetch and include header and footer
 function includeHeaderFooter() {
-    fetch('../pages/header.html')
-        .then(response => {
+    const basePath = window.location.pathname.includes('/pages/') ? '../' : '';
+
+    fetch(`${basePath}pages/header.html`)
+        .then((response) => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             return response.text();
         })
-        .then(data => {
-            setInnerHTML('header', data);
+        .then((data) => {
+            setInnerHTML("header", data);
         })
-        .catch(error => console.error('Error fetching header:', error));
+        .catch((error) => console.error("Error fetching header:", error));
 
-    fetch("../pages/footer.html")
+    fetch(`${basePath}pages/footer.html`)
         .then((response) => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -23,12 +25,17 @@ function includeHeaderFooter() {
             setInnerHTML("footer", data);
         })
         .catch((error) => console.error("Error fetching footer:", error));
+
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = `${basePath}styles/sidebar.css`; // Ensure this path is correct
+    document.head.appendChild(link);
 }
 
 // Function to set the page title
 function setPageTitle(title) {
     document.title = title;
-    const headerTitle = document.querySelector('header .title');
+    const headerTitle = document.querySelector("header .title");
     if (headerTitle) {
         headerTitle.textContent = title;
     }
@@ -37,10 +44,10 @@ function setPageTitle(title) {
 // Function to toggle code snippet visibility
 function toggleCodeSnippet(snippetId) {
     const snippet = document.getElementById(snippetId);
-    if (snippet.style.display === 'none' || snippet.style.display === '') {
-        snippet.style.display = 'block';
+    if (snippet.style.display === "none" || snippet.style.display === "") {
+        snippet.style.display = "block";
     } else {
-        snippet.style.display = 'none';
+        snippet.style.display = "none";
     }
 }
 
@@ -48,15 +55,16 @@ function toggleCodeSnippet(snippetId) {
 function copyCodeSnippet(snippetId) {
     const snippet = document.getElementById(snippetId);
     if (snippet) {
-        navigator.clipboard.writeText(snippet.textContent)
-            .then(() => alert('Code copied to clipboard'))
-            .catch(err => console.error('Failed to copy code: ', err));
+        navigator.clipboard
+            .writeText(snippet.textContent)
+            .then(() => alert("Code copied to clipboard"))
+            .catch((err) => console.error("Failed to copy code: ", err));
     }
 }
 
 // Function to open sidebar navigation
 function openSidebar() {
-    showElement('sidebar');
+    showElement("sidebar");
 }
 
 // Function to close sidebar navigation
@@ -75,7 +83,7 @@ function toggleSidebar() {
 function showElement(elementId) {
     const element = document.getElementById(elementId);
     if (element) {
-        element.style.display = 'block';
+        element.style.display = "block";
     }
 }
 
@@ -83,7 +91,7 @@ function showElement(elementId) {
 function hideElement(elementId) {
     const element = document.getElementById(elementId);
     if (element) {
-        element.style.display = 'none';
+        element.style.display = "none";
     }
 }
 
@@ -91,10 +99,10 @@ function hideElement(elementId) {
 function toggleElement(elementId) {
     const element = document.getElementById(elementId);
     if (element) {
-        if (element.style.display === 'none' || element.style.display === '') {
-            element.style.display = 'block';
+        if (element.style.display === "none" || element.style.display === "") {
+            element.style.display = "block";
         } else {
-            element.style.display = 'none';
+            element.style.display = "none";
         }
     }
 }
@@ -131,10 +139,10 @@ function closeOverlayNav() {
 function openModal(modalId) {
     const modal = document.getElementById(modalId);
     const overlay = document.getElementById(`overlay-${modalId}`);
-    
-    if (modal.classList.contains('slide-in')) {
-        overlay.classList.add('show');
-        modal.classList.add('show');
+
+    if (modal.classList.contains("slide-in")) {
+        overlay.classList.add("show");
+        modal.classList.add("show");
     } else {
         modal.style.display = "flex";
     }
@@ -143,17 +151,17 @@ function openModal(modalId) {
 function closeModal(modalId) {
     const modal = document.getElementById(modalId);
     const overlay = document.getElementById(`overlay-${modalId}`);
-    
-    if (modal.classList.contains('slide-in')) {
-        overlay.classList.remove('show');
-        modal.classList.remove('show');
+
+    if (modal.classList.contains("slide-in")) {
+        overlay.classList.remove("show");
+        modal.classList.remove("show");
     } else {
         modal.style.display = "none";
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM fully loaded and parsed');
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("DOM fully loaded and parsed");
     includeHeaderFooter();
 
     // Add event listener to close sidebar when clicking outside of it
@@ -173,8 +181,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Add event listener to close modal when clicking outside of it
-    const modals = document.querySelectorAll('.modal');
-    modals.forEach(modal => {
+    const modals = document.querySelectorAll(".modal");
+    modals.forEach((modal) => {
         window.addEventListener("click", (event) => {
             if (event.target === modal) {
                 closeModal(modal.id);
@@ -183,11 +191,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Update modal overlay click handling
-    const modalOverlays = document.querySelectorAll('.modal-overlay');
-    modalOverlays.forEach(overlay => {
-        overlay.addEventListener('click', (event) => {
+    const modalOverlays = document.querySelectorAll(".modal-overlay");
+    modalOverlays.forEach((overlay) => {
+        overlay.addEventListener("click", (event) => {
             if (event.target === overlay) {
-                const modalId = overlay.getAttribute('id').replace('overlay-', '');
+                const modalId = overlay.getAttribute("id").replace("overlay-", "");
                 closeModal(modalId);
             }
         });
@@ -201,16 +209,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    document.addEventListener('click', (event) => {
+    document.addEventListener("click", (event) => {
         const sidebar = document.getElementById("sidebar");
-        if (sidebar.classList.contains("open") &&
-            !sidebar.contains(event.target) &&
-            !event.target.closest(".hamburger")) {
+        if (sidebar.classList.contains("open") && !sidebar.contains(event.target) && !event.target.closest(".hamburger")) {
             closeSidebar();
         }
     });
 
-    document.addEventListener('keydown', (event) => {
+    document.addEventListener("keydown", (event) => {
         const sidebar = document.getElementById("sidebar");
         if (event.key === "Escape" && sidebar.classList.contains("open")) {
             closeSidebar();
@@ -218,18 +224,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Breadcrumb generation
-    const breadcrumbs = document.getElementById('breadcrumbs');
+    const breadcrumbs = document.getElementById("breadcrumbs");
     if (breadcrumbs) {
-        const path = window.location.pathname.split('/').filter(Boolean);
+        const path = window.location.pathname.split("/").filter(Boolean);
         let breadcrumbHTML = '<a href="../index.html">Home</a>';
-        let currentPath = '';
+        let currentPath = "";
 
         path.forEach((segment, index) => {
             currentPath += `/${segment}`;
             if (index < path.length - 1) {
-                breadcrumbHTML += ` / <a href="${currentPath}">${segment.replace('.html', '').replace(/-/g, ' ')}</a>`;
+                breadcrumbHTML += ` / <a href="${currentPath}">${segment.replace(".html", "").replace(/-/g, " ")}</a>`;
             } else {
-                breadcrumbHTML += ` / ${segment.replace('.html', '').replace(/-/g, ' ')}`;
+                breadcrumbHTML += ` / ${segment.replace(".html", "").replace(/-/g, " ")}`;
             }
         });
 
