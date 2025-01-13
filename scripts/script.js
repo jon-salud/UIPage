@@ -64,19 +64,32 @@ function copyCodeSnippet(snippetId) {
 
 // Function to open sidebar navigation
 function openSidebar() {
-    showElement("sidebar");
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    sidebar.classList.add('open');
+    overlay.style.display = 'block';
+    document.body.style.overflow = 'hidden';
 }
 
 // Function to close sidebar navigation
 function closeSidebar() {
-    const sidebar = document.getElementById("sidebar");
-    sidebar.classList.remove("open");
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    sidebar.classList.remove('open');
+    overlay.style.display = 'none';
+    document.body.style.overflow = 'auto';
 }
 
 // Function to toggle the sidebar
 function toggleSidebar() {
-    const sidebar = document.getElementById("sidebar");
-    sidebar.classList.toggle("open");
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.querySelector('.sidebar-overlay');
+    
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('open');
+    
+    // Prevent body scrolling when sidebar is open
+    document.body.style.overflow = sidebar.classList.contains('open') ? 'hidden' : '';
 }
 
 // Function to show an element
@@ -160,6 +173,23 @@ function closeModal(modalId) {
     }
 }
 
+// Navigation demo functions
+function openNavDemo() {
+    document.getElementById("navDemoSidebar").classList.add("open");
+}
+
+function closeNavDemo() {
+    document.getElementById("navDemoSidebar").classList.remove("open");
+}
+
+function openOverlayNavDemo() {
+    document.getElementById("navDemoOverlay").classList.add("open");
+}
+
+function closeOverlayNavDemo() {
+    document.getElementById("navDemoOverlay").classList.remove("open");
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM fully loaded and parsed");
     includeHeaderFooter();
@@ -167,7 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Add event listener to close sidebar when clicking outside of it
     const overlay = document.getElementById("overlay");
     if (overlay) {
-        overlay.addEventListener("click", closeNav);
+        overlay.addEventListener("click", closeSidebar);
     }
 
     // Add event listener to close overlay navigation when clicking outside of it
@@ -240,5 +270,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         breadcrumbs.innerHTML = breadcrumbHTML;
+    }
+
+    // Initialize sidebar state
+    const sidebar = document.getElementById('sidebar');
+    if (sidebar) {
+        sidebar.style.width = '0';
     }
 });
