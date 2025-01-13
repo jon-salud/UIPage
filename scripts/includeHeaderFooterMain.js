@@ -14,23 +14,27 @@ function loadHeaderFooter() {
     includeHTML('footer', 'pages/footer.html');
 }
 
+// Function to include header, sidebar, and styles
+function includeHeaderFooter() {
+    // Correctly fetch and include the header HTML content
+    includeHTML('header', 'pages/header.html');
+
+    // Fetch and include the CSS files separately
+    const stylesheets = ['styles/header.css', 'styles/sidebar.css', 'styles/styles.css'];
+    stylesheets.forEach(path => {
+        fetch(path)
+            .then(response => response.text())
+            .then(data => {
+                const style = document.createElement('style');
+                style.textContent = data;
+                document.head.appendChild(style);
+            })
+            .catch(error => console.error(`Error loading ${path}:`, error));
+    });
+}
+
 // Load header and footer when DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Determine the correct path to header.html based on current page location
-    const isIndexPage = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/');
-    const headerPath = isIndexPage ? './pages/header.html' : 'header.html';
-
-    // Load header
-    fetch(headerPath)
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('header').innerHTML = data;
-            // Run any scripts that were in the header
-            Array.from(document.getElementById('header').getElementsByTagName('script')).forEach(script => {
-                eval(script.innerHTML);
-            });
-        })
-        .catch(error => console.error('Error loading header:', error));
-
     loadHeaderFooter();
+    includeHeaderFooter();
 });
