@@ -142,7 +142,10 @@ function openNav() {
 
 // Function to close sidebar navigation
 function closeNav() {
-    document.getElementById("mySidebar").classList.remove("open");
+    const sidebar = document.getElementById("mySidebar");
+    if (sidebar) {
+        sidebar.classList.remove("open");
+    }
 }
 
 function openOverlayNav() {
@@ -150,7 +153,10 @@ function openOverlayNav() {
 }
 
 function closeOverlayNav() {
-    document.getElementById("myOverlayNav").classList.remove("open");
+    const overlayNav = document.getElementById("myOverlayNav");
+    if (overlayNav) {
+        overlayNav.classList.remove("open");
+    }
 }
 
 function openModal(modalId) {
@@ -180,18 +186,42 @@ function closeModal(modalId) {
 // Navigation demo functions
 function openNavDemo() {
     document.getElementById("navDemoSidebar").classList.add("open");
+    document.getElementById("overlay").style.display = "block";
 }
 
 function closeNavDemo() {
     document.getElementById("navDemoSidebar").classList.remove("open");
+    document.getElementById("overlay").style.display = "none";
 }
 
 function openOverlayNavDemo() {
-    document.getElementById("navDemoOverlay").classList.add("open");
+    const overlay = document.getElementById("navDemoOverlay");
+    overlay.style.display = "flex";
+    requestAnimationFrame(() => {
+        overlay.classList.add("open");
+    });
+
+    // Add event listener to close when clicking outside the links
+    document.addEventListener("click", closeOverlayNavDemoOnClick);
 }
 
-function closeOverlayNavDemo() {
-    document.getElementById("navDemoOverlay").classList.remove("open");
+function closeOverlayNavDemo(event) {
+    const overlay = document.getElementById("navDemoOverlay");
+    overlay.classList.remove("open");
+    setTimeout(() => {
+        overlay.style.display = "none";
+    }, 300);
+
+    // Remove the event listener after closing
+    document.removeEventListener("click", closeOverlayNavDemoOnClick);
+}
+
+function closeOverlayNavDemoOnClick(event) {
+    const overlay = document.getElementById("navDemoOverlay");
+    const overlayContent = document.querySelector(".overlay-content");
+    if (!overlayContent.contains(event.target)) {
+        closeOverlayNavDemo();
+    }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -201,16 +231,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // Add event listener to close sidebar when clicking outside of it
     const overlay = document.getElementById("overlay");
     if (overlay) {
-        overlay.addEventListener("click", closeSidebar);
+        overlay.addEventListener("click", closeNavDemo);
     }
 
     // Add event listener to close overlay navigation when clicking outside of it
-    const overlayNav = document.getElementById("myOverlayNav");
+    const overlayNav = document.getElementById("navDemoOverlay");
     if (overlayNav) {
         overlayNav.addEventListener("click", (event) => {
-            if (event.target === overlayNav) {
-                closeOverlayNav();
-            }
+            closeOverlayNavDemo(event);
         });
     }
 

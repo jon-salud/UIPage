@@ -127,7 +127,7 @@
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 1;
+    z-index: 9999; /* Updated z-index to be higher than header */
     top: 0;
     right: 0;
     background-color: #111;
@@ -145,31 +145,53 @@
     height: 100%;
     width: 100%;
     position: fixed;
-    z-index: 1;
+    z-index: 9999;
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.9);
     overflow-x: hidden;
-    transition: 0.5s;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
     display: none;
 }
 
 .nav-demo-overlay.open {
+    opacity: 1;
+}
+
+.nav-demo-overlay .overlay-menu {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: 100%;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    pointer-events: all;
+}
+
+.nav-demo-overlay .overlay-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    pointer-events: all;
 }
 
 /* Shared styles for both demos */
 .nav-demo-sidebar a,
 .nav-demo-overlay a {
-    padding: 8px 8px 8px 32px;
+    padding: 8px;
     text-decoration: none;
     font-size: 25px;
     color: #818181;
     display: block;
     transition: 0.3s;
+    text-align: center;
 }
 
 .nav-demo-sidebar a:hover,
@@ -180,8 +202,45 @@
 .nav-demo-sidebar .closebtn,
 .nav-demo-overlay .closebtn {
     position: absolute;
-    top: 0;
-    right: 25px;
+    top: 20px;
+    right: 45px;
     font-size: 36px;
-    margin-left: 50px;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    z-index: 10000;
+}
+
+/* Demo navigation buttons styling */
+.demo .openbtn {
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+    margin: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.demo .openbtn:hover {
+    background-color: #5a5a5a;
+    transform: translateY(-2px);
+}
+
+.demo .openbtn:active {
+    transform: translateY(0);
+}
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 9998;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    display: none;
 }
