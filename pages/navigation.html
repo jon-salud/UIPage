@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../styles/sidebar.css">
     <script src="../scripts/script.js" defer></script>
 </head>
-<body class="full-height" onclick="closeNav(); closeOverlayNav();">
+<body class="full-height">
     <div id="header"></div>
     <div class="content">
         <div class="row">
@@ -226,12 +226,16 @@ function closeNav() {
         <div class="row">
             <div class="demo">
                 <button class="openbtn" onclick="event.stopPropagation(); openOverlayNavDemo()">☰ Open Overlay Menu</button>
-                <div id="navDemoOverlay" class="nav-demo-overlay" onclick="event.stopPropagation()">
-                    <a href="javascript:void(0)" class="closebtn" onclick="closeOverlayNavDemo()">×</a>
-                    <a href="#">Home</a>
-                    <a href="#">About</a>
-                    <a href="#">Services</a>
-                    <a href="#">Contact</a>
+                <div id="navDemoOverlay" class="nav-demo-overlay" onclick="closeOverlayNavDemo(event)">
+                    <div class="overlay-content" onclick="event.stopPropagation()"> 
+                        <div class="overlay-menu">
+                            <a href="javascript:void(0)" class="closebtn" onclick="event.stopPropagation(); closeOverlayNavDemo()">×</a>
+                            <a href="#">Home</a>
+                            <a href="#">About</a>
+                            <a href="#">Services</a>
+                            <a href="#">Contact</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="code">
@@ -297,7 +301,8 @@ function closeOverlayNav() {
         </div>
     </div>
     <div id="footer"></div>
-    <div id="overlay" class="overlay" onclick="closeOverlayNav()"></div>
+    <div id="overlay" class="overlay" onclick="closeNavDemo()"></div>
+    <div id="overlayNav" class="overlay-nav"></div>
     <script src="../scripts/menuConfig.js"></script>
     <script src="../scripts/includeHeaderFooter.js" defer></script>
 </body>
